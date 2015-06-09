@@ -193,7 +193,7 @@ The **stage template** uses the same context as the **panel template**.
 ```
 
 ### Panel
-> Set `url` path to your server-side script. `?n=number` is automatically appended to the query string.<br />
+> Set `url` path to your server-side script. `?n=number` is automatically appended to the query string.
 > The returned HTML is added to the document.
 
 `.panel` class is automatically added to the parent element.
