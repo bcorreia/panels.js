@@ -59,21 +59,21 @@ var panels = new Panels(document.querySelector('.selector'), {
         easing: "easeOutQuad"
     },
     onInit: function() {},
-    onBefore: …
-    onAfter: …
+    onBefore: function() {},
+    onAfter: function() {}
 }
 ```
 
 | Options | Description | Default | Type
 :--- | :--- | ---: | ---:
-| `handlebars` | Use Handlebars templates | `true` | `boolean`
+| `handlebars` | Handlebars templates | `true` | `boolean`
 | `context` | Context to compile Handlebars templates | `{}` | `object`
-| `url` | Use when `handlebars` is set to `false` | `undefined` | `string`
+| `url` | URL for Ajax request \* | `undefined` | `string`
 | &nbsp; | |
-| `stage.fade` | Fade in on “imagesloaded” event | `true` | `boolean`
+| `stage.fade` | Fade in on “imagesloaded” event dispatch | `true` | `boolean`
 | `stage.speed` | Fade in speed in milliseconds | `800` | `number`
 | &nbsp; | |
-| `panel.classes` | CSS classes to be added to panel element | `""` | `string`
+| `panel.classes` | CSS class names to be added to panel element | `""` | `string`
 | `panel.position` | `top`, `between rows` or `over stage` | `top` | `string`
 | `panel.stackable` | Allow stacking of multiple panels \*\* | `true` | `boolean`
 | `panel.speed` | Animation speed in milliseconds | `600` | `number`
@@ -83,6 +83,7 @@ var panels = new Panels(document.querySelector('.selector'), {
 | `scroll.speed` | Scroll speed in milliseconds | `600` | `number`
 | `scroll.easing` | Scroll easing type | `easeOutQuad` | `string`
 
+\* Use only when `handlebars` is set to `false`.<br />
 \*\* This option is available only when `panel.position` is set to `top`.
 
 ```javascript
