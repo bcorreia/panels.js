@@ -6,12 +6,12 @@
 ---
 **A natural collection of panels.**
 
-Built to display a collection of panels, ***panels.js*** can be creatively applied to e-commerce projects, portfolio websites, visual documentations, comparison charts and other.
+Built to display a collection of panels, ***panels.js*** can be creatively applied to e-commerce projects, portfolio websites, comparison charts and other.
 
-1. Animation performance with [velocity.js](https://github.com/julianshapiro/velocity)<br />
-1. Coded to leverage [handlebars.js](http://handlebarsjs.com/) (optional)<br />
-1. jQuery library is **not** required<br />
-1. Responsive
+1. Animation performance with [velocity](https://github.com/julianshapiro/velocity).<br />
+1. Coded to leverage [handlebars](http://handlebarsjs.com/) templates.<br />
+1. Responsive.
+1. jQuery library **is not** required.
 
 ## Demos
 [Multiple panels stacked](http://bcorreia.com/projects/panels.js/src/demo-top-stacked.html)<br />
@@ -108,16 +108,28 @@ onAfter: function(event, element) {}    // called after animation ends
 
 ### Public Methods
 ```javascript
-.close(element, callback);              // @param: panel element
-                                        // @param: fn triggered after animation ends
-
 .open(element, callback);               // @param: stage element
                                         // @param: fn triggered after animation ends
 
-// example
+.close(element, callback);              // @param: panel element
+                                        // @param: fn triggered after animation ends
+
+// -----------------------------------
+// examples
+// -----------------------------------
+
+// Open 2nd panel
 var panels = new Panels(document.querySelector('.selector'));
-…
 panels.open(document.querySelector('figure:nth-child(2)'));
+
+// Close all stacked panels
+document.querySelector('[href="#"]').addEventListener('click', function(event) {
+    event.preventDefault();
+    var nodes = document.querySelectorAll('.panel');
+    for (var i = 0; i < nodes.length; i++) {
+        panels.close(nodes[i]);
+    };
+});
 ```
 
 ### HTML data-attributes
@@ -180,6 +192,7 @@ The **stage template** uses the same context as the **panel template**.
 ```
 
 ## Without Handlebars
+> Set `url` to which ajax request will be sent. `?n=number` is automatically appended to the query string.
 
 ### Stage
 `.item` is the only required class.
@@ -194,9 +207,6 @@ The **stage template** uses the same context as the **panel template**.
 ```
 
 ### Panel
-> Set `url` path to your server-side script. `?n=number` is automatically appended to the query string.
-> The returned HTML is added to the document.
-
 `.panel` class is automatically added to the parent element.
 ```html
 <!-- be creative -->
@@ -204,8 +214,8 @@ The **stage template** uses the same context as the **panel template**.
 
 ## Dependencies
 - [Velocity](https://github.com/julianshapiro/velocity)
-- [imagesLoaded](https://github.com/desandro/imagesloaded)
-- [Handlebars](http://handlebarsjs.com/) (optional)
+- [Desandro’s imagesloaded](https://github.com/desandro/imagesloaded)
+- [Handlebars](http://handlebarsjs.com/) \*optional
 
 ## License
 This software is free to use under the [MIT license](https://github.com/bcorreia/panels.js/blob/master/license.md).
