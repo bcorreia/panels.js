@@ -1,61 +1,61 @@
 /* normalize - reset
 --------------------------------------------- */
-*, *:before, *:after                            { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+*, *:before, *:after               { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 * :focus,
-* :active                                       { outline: none !important; -moz-outline-style: none; }
+* :active                          { outline: none !important; -moz-outline-style: none; }
 
 /* demo styles
 --------------------------------------------- */
-body                                            { background: #FFF; font: normal normal 300 1em/1.6 'Roboto', sans-serif; letter-spacing: 0.05em; color: #EAEAEA; }
+body                               { background:#2B303B; font: normal normal 300 1em/1.6 'Roboto', sans-serif; letter-spacing: 0.05em; color: #EAEAEA; }
 
 /* panel
 --------------------------------------------- */
-.panel                                          { width: 100%; position: relative; overflow: hidden; background-color: #94B2AC; }
-.panel h1                                       { font-size: 4.236em; line-height: 1.2; margin: 0 0 45px 0; }
-.panel h2                                       { font-size: 2.618em; line-height: 1.2; margin: 0 0 27px 0; }
-.panel p                                        { font-size: 1em; line-height: 1.6; margin: 0 0 18px 0; }
-.panel .content                                 { padding:32px; }
+.panel                             { width: 100%; position: relative; overflow: hidden; background-color: #94B2AC; }
+.panel h1                          { font-size: 4.236em; line-height: 1.2; margin: 0 0 45px 0; }
+.panel h2                          { font-size: 2.618em; line-height: 1.2; margin: 0 0 27px 0; }
+.panel p                           { font-size: 1em; line-height: 1.6; margin: 0 0 18px 0; }
+.panel .content                    { padding:32px; }
 
 @media (min-width: 768px) {
-    .panel .content                             { padding: 64px; }
+    .panel .content                { padding: 64px; }
 }
 
 /* stage
 --------------------------------------------- */
-.demo                                           { display: flex; display: -webkit-flex; display: -ms-flexbox; -webkit-flex-flow: row wrap; -ms-flex-flow: row wrap; flex-flow: row wrap; }
-.demo                                           { border:12px solid #FFF; background:#2B303B; min-height: 100vh; }
-.demo .item                                     { position: relative; width: 33.333%; cursor: pointer; transition: opacity 1.5s ease; margin: 0; text-align: center; padding:12px; }
-.demo .item                                     { display: flex; display: -webkit-flex; display: -ms-flexbox; align-items: center; -webkit-align-items: center; justify-content:center; -webkit-justify-content:center; -ms-flex-pack:justify; }
-.demo .item                                     { font-size: 4.236em; color: #555; transition: all .5s ease; }
-.demo .item:hover:not(.on)                      { background-color: #FF9900; }
-.demo .item.on                                  { color:#FF9900; cursor: default; }
+.demo                              { display: flex; display: -webkit-flex; display: -ms-flexbox; -webkit-flex-flow: row wrap; -ms-flex-flow: row wrap; flex-flow: row wrap; }
+.demo                              { border:12px solid #FFF; min-height: 100vh; }
+.demo .item                        { position: relative; width: 33.333%; cursor: pointer; transition: opacity 1.5s ease; margin: 0; text-align: center; padding:12px; }
+.demo .item                        { display: flex; display: -webkit-flex; display: -ms-flexbox; align-items: center; -webkit-align-items: center; justify-content:center; -webkit-justify-content:center; -ms-flex-pack:justify; }
+.demo .item                        { font-size: 4.236em; color: #555; transition: all .5s ease; }
+.demo .item:hover:not(.on)         { background-color: #FF9900; }
+.demo .item.on                     { color:#FF9900; cursor: default; }
 
 @media (min-width: 768px) {
-    .demo .item                                 { width: 25%; }
+    .demo .item                    { width: 25%; }
 }
 @media (min-width: 992px) {
-    .demo .item                                 { width: 20%; }
+    .demo .item                    { width: 20%; }
 }
 @media (min-width: 1200px) {
-    .demo .item                                 { width: 14.285%; }
+    .demo .item                    { width: 14.285%; }
 }
 
 /* over stage -alt
 --------------------------------------------- */
-.-alt                                           { min-height: 100vh; }
+.-alt                              { min-height: 100vh; }
 
 /* buttons
 --------------------------------------------- */
-.buttons                                        { padding: 32px 0 0 0; }
-.-button                                        { color: #EAEAEA; text-decoration: none; text-transform: uppercase; display: inline-block; padding: 12px 28px; background: #4AB1D1; font-size: 0.8em; transition: background .5s; }
-.-button:hover                                  { background: #2B303B; }
-.-button.disabled                               { display: none !important; }
+.buttons                           { padding: 32px 0 0 0; }
+.-button                           { color: #EAEAEA; text-decoration: none; text-transform: uppercase; display: inline-block; padding: 12px 28px; background: #4AB1D1; font-size: 0.8em; transition: background .5s; }
+.-button:hover                     { background: #2B303B; }
+.-button.disabled                  { display: none !important; }
 
 /* close
 --------------------------------------------- */
-.close                                          { position: absolute; top: 18px; right: 18px; background: url("../images/close.png") 0 0 no-repeat; background-size: contain; width: 34px; height: 34px; transition: opacity .5s; }
-.close:hover                                    { opacity: .5; }
+.close                             { position: absolute; top: 18px; right: 18px; background: url("../images/close.png") 0 0 no-repeat; background-size: contain; width: 34px; height: 34px; transition: opacity .5s; }
+.close:hover                       { opacity: .5; }
 
 /* helper
 --------------------------------------------- */
-.text-hide                                      { font: 0/0 a; color: transparent; text-shadow: none; background-color: transparent; border: 0; }
+.text-hide                         { font: 0/0 a; color: transparent; text-shadow: none; background-color: transparent; border: 0; }
