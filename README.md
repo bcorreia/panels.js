@@ -68,12 +68,12 @@ var panels = new Panels(document.querySelector('.selector'), {
 :--- | :--- | ---: | ---:
 | `handlebars` | Handlebars templates | `true` | `boolean`
 | `context` | Context to compile Handlebars templates | `{}` | `object`
-| `url` | URL for Ajax request \* | `undefined` | `string`
+| `url` | URL to which ajax request is sent \* | `undefined` | `string`
 | &nbsp; | |
 | `stage.fade` | Fade in on “imagesloaded” event dispatch | `true` | `boolean`
 | `stage.speed` | Fade in speed in milliseconds | `800` | `number`
 | &nbsp; | |
-| `panel.classes` | CSS class names to be added to panel element | `""` | `string`
+| `panel.classes` | CSS class to be added to panel element | `""` | `string`
 | `panel.position` | `top`, `between rows` or `over stage` | `top` | `string`
 | `panel.stackable` | Allow stacking of multiple panels \*\* | `true` | `boolean`
 | `panel.speed` | Animation speed in milliseconds | `600` | `number`
