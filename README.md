@@ -8,15 +8,27 @@
 
 Built to display a collection of panels, ***panels.js*** can be creatively applied to e-commerce projects, portfolio websites, comparison charts and other.
 
-1. Animation performance with [velocity](https://github.com/julianshapiro/velocity).<br />
-1. Coded to leverage [handlebars](http://handlebarsjs.com/) templates.<br />
-1. Responsive.
-1. jQuery library **is not** required.
+1. Animation performance with [velocity](https://github.com/julianshapiro/velocity) (dependency)<br />
+1. Template loading with [handlebars](http://handlebarsjs.com) (optional)<br />
+1. Image(s) loaded events with [imagesLoaded](https://github.com/desandro/imagesloaded) (optional)
+1. jQuery is **not required**
 
 ## Demos
 [Multiple panels stacked](http://bcorreia.com/projects/panels.js/src/demo-top-stacked.html)<br />
 [Single panel between rows](http://bcorreia.com/projects/panels.js/src/demo-between-rows.html)<br />
-[Single panel over stage](http://bcorreia.com/projects/panels.js/src/demo-over-stage.html)
+[Single panel custom position](http://bcorreia.com/projects/panels.js/src/demo-position-custom.html)
+
+---
+## Documentation
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [Default Settings](#default-settings)
+- [Callbacks](#callbacks)
+- [Public Methods](#public-methods)
+- [HTML data-attributes](#html-data-attributes)
+- [With Handlebars](#with-handlebars)
+- [Without Handlebars](#without-handlebars)
+- [imagesLoaded](#desandros-imagesloaded)
 
 ## Getting Started
 You may install using package managers, or download project [archive](https://github.com/bcorreia/panels.js/archive/master.zip).<br />
@@ -36,7 +48,7 @@ var panels = new Panels(document.querySelector('.selector'), {
 });
 ```
 
-## Settings
+## Default Settings
 ```javascript
 {
     handlebars: true,
@@ -68,14 +80,14 @@ var panels = new Panels(document.querySelector('.selector'), {
 :--- | :--- | ---: | ---:
 | `handlebars` | Handlebars templates | `true` | `boolean`
 | `context` | Context to compile Handlebars templates | `{}` | `object`
-| `url` | URL to which ajax request is sent \* | `undefined` | `string`
+| `url` | URL to which ajax request is sent <sup>**[1]**</sup> | `undefined` | `string`
 | &nbsp; | |
 | `stage.fade` | Fade in on “imagesloaded” event dispatch | `true` | `boolean`
 | `stage.speed` | Fade in speed in milliseconds | `800` | `number`
 | &nbsp; | |
 | `panel.classes` | CSS class to be added to panel element | `""` | `string`
-| `panel.position` | `top`, `between rows` or `over stage` | `top` | `string`
-| `panel.stackable` | Allow stacking of multiple panels \*\* | `true` | `boolean`
+| `panel.position` | `top`, `between rows` or `dom element` <sup>**[2]**</sup> | `top` | `str/obj`
+| `panel.stackable` | Allow stacking of multiple panels <sup>**[3]**</sup> | `true` | `boolean`
 | `panel.speed` | Animation speed in milliseconds | `600` | `number`
 | `panel.easing` | Animation easing type | `easeOutQuad` | `string`
 | &nbsp; | |
@@ -83,8 +95,9 @@ var panels = new Panels(document.querySelector('.selector'), {
 | `scroll.speed` | Scroll speed in milliseconds | `600` | `number`
 | `scroll.easing` | Scroll easing type | `easeOutQuad` | `string`
 
-\* Use only when `handlebars` is set to `false`.<br />
-\*\* This option is available only when `panel.position` is set to `top`.
+<sup>**[1]**</sup> Use only when `handlebars` is set to `false`.<br />
+<sup>**[2]**</sup> Use one of the default positions, or pass a valid dom element.<br />
+<sup>**[3]**</sup> This option is available only when `panel.position` is set to `top`.
 
 ```javascript
 /*
@@ -108,15 +121,14 @@ onAfter: function(event, element) {}    // called after animation ends
 
 ### Public Methods
 ```javascript
-.open(element, callback);               // @param: stage element
+.open(element, callback);               // @param: stage dom element
                                         // @param: fn triggered after animation ends
 
-.close(element, callback);              // @param: panel element
+.close(element, callback);              // @param: panel dom element
                                         // @param: fn triggered after animation ends
 
-// -----------------------------------
-// examples
-// -----------------------------------
+
+// examples ---------------------------
 
 // Open 2nd panel
 var panels = new Panels(document.querySelector('.selector'));
@@ -130,6 +142,8 @@ document.querySelector('[href="#"]').addEventListener('click', function(event) {
         panels.close(nodes[i]);
     };
 });
+
+// end --------------------------------
 ```
 
 ### HTML data-attributes
@@ -212,10 +226,10 @@ The **stage template** uses the same context as the **panel template**.
 <!-- be creative -->
 ```
 
-## Dependencies
-- [Velocity](https://github.com/julianshapiro/velocity)
-- [Desandro’s imagesloaded](https://github.com/desandro/imagesloaded)
-- [Handlebars](http://handlebarsjs.com/) \*optional
+## Desandro’s imagesLoaded
+***Panels.js*** automatically recognizes the presence of the [imagesLoaded](https://github.com/desandro/imagesloaded) library.<br /> This library is recommended when image(s) are being loaded in your template.
+
+---
 
 ## License
 This software is free to use under the [MIT license](https://github.com/bcorreia/panels.js/blob/master/license.md).
