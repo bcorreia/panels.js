@@ -312,7 +312,11 @@ var Panels = (function() {
         }
 
         // !stackable: close before insert
-        Panels.prototype.close(undefined, function() {
+        if ( stack.length ) {
+            var element = stack[stack.length -1];
+        }
+
+        Panels.prototype.close(element, function() {
             return callback();
         });
     };
@@ -457,7 +461,7 @@ var Panels = (function() {
 
         /**
          * close
-         * @param: {Object} panel element (if undefined, last array item is used)
+         * @param: {Object} panel element
          * @param: {Object} function
          * @return undefined, or callback on animation ends
          *
@@ -465,7 +469,6 @@ var Panels = (function() {
         close: function(element, callback) {
             var options = { opacity: 0 };
 
-            element = element || (stack.pop());
             if ( element === undefined ) {
                 return;
             }
@@ -480,10 +483,13 @@ var Panels = (function() {
                 };
             }
 
+            console.log(stack);
             Velocity(element, options, settings.panel.speed, settings.panel.easing, function() {
                 stage.off.call(element.getAttribute("data-paired")); // update stage
                 element.parentNode.removeChild(element); // remove
                 stack.pop();
+
+                console.log(stack);
 
                 // callback fn
                 settings.onAfter("close", element);

@@ -12,6 +12,8 @@
 </head>
 <body>
 
+    <a href="#">Close</a>
+
     <div class="selector">
         <!-- stage template -->
         <script data-role="stage" type="text/x-handlebars-template">
@@ -69,6 +71,11 @@
                     position: "top"
                 }
             });
+
+            document.querySelector('[href="#"]').addEventListener('click', function(event) {
+                event.preventDefault();
+                panels.close();
+            })
         });
     </script>
 </body>

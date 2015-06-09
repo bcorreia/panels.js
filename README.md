@@ -108,7 +108,7 @@ onAfter: function(event, element) {}    // called after animation ends
 
 ### Public Methods
 ```javascript
-.close(element, callback);              // @param: `undefined` or panel element
+.close(element, callback);              // @param: panel element
                                         // @param: fn triggered after animation ends
 
 .open(element, callback);               // @param: stage element
