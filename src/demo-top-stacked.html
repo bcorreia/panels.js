@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>panels.js</title>
+
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="panels.js - A natural collection of panels" />
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700|Roboto:100,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" media="all" href="./css/normalize.css" />
+    <link rel="stylesheet" media="all" href="./css/styles.css?v=1.0" />
+</head>
+<body>
+
+    <div class="selector">
+        <!-- stage template -->
+        <script data-role="stage" type="text/x-handlebars-template">
+            {{#each items}}
+                <figure class="item">
+                    <img src="{{preview}}" />
+                </figure>
+            {{/each}}
+        </script>
+
+        <!-- panel template -->
+        <script data-role="panel" type="text/x-handlebars-template">
+            <div class="content">
+                <div>
+                    <figure>
+                        <img src="{{original}}" />
+                    </figure>
+                </div>
+                <div>
+                    <a href="#" class="close text-hide" data-role="close">Close</a>
+                    <h1>{{title}}</h1>
+                    <p>{{body}}</p>
+                    <div class="buttons">
+                        <a class="-button" data-role="previous" href="#">Prev</a>
+                        <a class="-button" data-role="next" href="#">Next</a>
+                    </div>
+                </div>
+            </div>
+        </script>
+    </div>
+
+    <!-- dependencies -->
+    <script src="../components/handlebars/handlebars.min.js"></script>
+    <script src="../components/velocity/velocity.min.js"></script>
+    <script src="../components/imagesloaded/imagesloaded.pkgd.min.js"></script>
+
+    <!-- panels.js -->
+    <script src="./js/panels.js"></script>
+
+    <script>
+        var getJSON = function(url, successHandler) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('get', url, true);
+            xhr.send();
+            xhr.responseType = 'json';
+            xhr.onload = function() {
+                successHandler(xhr.response);
+            };
+        };
+
+        getJSON('./dataset/dataset-example.json', function(data) {
+            var panels = new Panels(document.querySelector('.selector'), {
+                context: data,
+                panel: {
+                    position: "top"
+                }
+            });
+        });
+    </script>
+</body>
+</html>

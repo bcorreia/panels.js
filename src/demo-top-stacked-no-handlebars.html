@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>panels.js</title>
+
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="panels.js - A natural collection of panels" />
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700|Roboto:100,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" media="all" href="./css/normalize.css" />
+    <link rel="stylesheet" media="all" href="./css/styles.css?v=1.0" />
+</head>
+<body>
+
+    <!-- demo - without handlebars templates -->
+    <div class="selector" style="dispaly:none;">
+        <figure class="item" data-query='{ "id": "0987" }'>
+            <img src="./images/01-preview.jpg">
+        </figure>
+        <figure class="item">
+            <img src="./images/02-preview.jpg">
+        </figure>
+        <figure class="item">
+            <img src="./images/03-preview.jpg">
+        </figure>
+        <figure class="item">
+            <img src="./images/04-preview.jpg">
+        </figure>
+        <figure class="item">
+            <img src="./images/05-preview.jpg">
+        </figure>
+        <figure class="item">
+            <img src="./images/06-preview.jpg">
+        </figure>
+        <figure class="item">
+            <img src="./images/07-preview.jpg">
+        </figure>
+        <figure class="item">
+            <img src="./images/08-preview.jpg">
+        </figure>
+        <figure class="item">
+            <img src="./images/09-preview.jpg">
+        </figure>
+        <figure class="item">
+            <img src="./images/10-preview.jpg">
+        </figure>
+        <figure class="item">
+            <img src="./images/11-preview.jpg">
+        </figure>
+        <figure class="item">
+            <img src="./images/12-preview.jpg">
+        </figure>
+        <figure class="item">
+            <img src="./images/13-preview.jpg">
+        </figure>
+        <figure class="item">
+            <img src="./images/14-preview.jpg">
+        </figure>
+        <figure class="item">
+            <img src="./images/15-preview.jpg">
+        </figure>
+        <figure class="item">
+            <img src="./images/16-preview.jpg">
+        </figure>
+        <figure class="item">
+            <img src="./images/17-preview.jpg">
+        </figure>
+        <figure class="item">
+            <img src="./images/18-preview.jpg">
+        </figure>
+        <figure class="item">
+            <img src="./images/19-preview.jpg">
+        </figure>
+        <figure class="item">
+            <img src="./images/20-preview.jpg">
+        </figure>
+        <figure class="item">
+            <img src="./images/21-preview.jpg">
+        </figure>
+        <figure class="item">
+            <img src="./images/22-preview.jpg">
+        </figure>
+    </div>
+
+    <!-- dependencies -->
+    <script src="../components/velocity/velocity.min.js"></script>
+    <script src="../components/imagesloaded/imagesloaded.pkgd.min.js"></script>
+
+    <!-- panels.js -->
+    <script src="./js/panels.js"></script>
+
+    <script>
+        var getJSON = function(url, successHandler) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('get', url, true);
+            xhr.send();
+            xhr.responseType = 'json';
+            xhr.onload = function() {
+                successHandler(xhr.response);
+            };
+        };
+
+        getJSON('./dataset/dataset-example.json', function(data) {
+            var panels = new Panels(document.querySelector('.selector'), {
+                handlebars: false,
+                url: "./dataset/example.html",
+                panel: {
+                    position: "between rows"
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>

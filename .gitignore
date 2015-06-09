@@ -1,0 +1,10 @@
+# Dependency directory
+node_modules
+
+# Sublime
+panels.sublime-project
+panels.sublime-workspace
+
+# Vanilla
+/panels.js/src/js/panels-vanilla.js
+/panels.js/src/demo-vanilla.html
