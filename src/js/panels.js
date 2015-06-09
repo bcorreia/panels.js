@@ -201,14 +201,14 @@ var Panels = (function() {
                 // referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling); insertAfter
             break;
 
-            case "over stage":
-                html = document.body.insertBefore(this, document.body.firstChild);
+            case "top":
+                this.style.cssText = properties;
+                html = stage.wrapper.insertBefore(this, stage.wrapper.firstChild);
                 // stage.wrapper.insertAdjacentHTML('afterbegin', this.outerHTML) prepend
             break;
 
-            default: // top
-                this.style.cssText = properties;
-                html = stage.wrapper.insertBefore(this, stage.wrapper.firstChild);
+            default: // custom
+                html = document.body.insertBefore(this, settings.panel.position);
                 // stage.wrapper.insertAdjacentHTML('afterbegin', this.outerHTML) prepend
         }
 
@@ -298,7 +298,7 @@ var Panels = (function() {
      *
      */
     panel.route = function(callback) {
-        if ( !stack.length || (settings.panel.stackable && settings.panel.position === "top") || settings.panel.position === "over stage" ) {
+        if ( !stack.length || (settings.panel.stackable && settings.panel.position === "top") ) {
             return callback();
         }
 
