@@ -1,6 +1,6 @@
 {
   "name": "panels.js",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "A natural collection of panels.",
   "main": "dist/panels.js",
   "repository": {
