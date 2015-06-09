@@ -37,8 +37,9 @@ Installing via `bower` will bring in the dependencies as well.
 bower install panels.js
 npm install panels.js
 
-# panels.min.js             minified version of panels.js
-# panels.packaged.min.js    minified with [velocity, handlebars, imagesloaded]
+# panels.min.js           minified version of panels.js
+# panels.pkg.min.js       minified with [velocity]
+# panels.pkg.all.min.js   minified with [velocity, handlebars, imagesloaded]
 ```
 
 ## Usage

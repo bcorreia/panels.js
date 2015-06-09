@@ -57,9 +57,13 @@ module.exports = function (grunt) {
                 banner: '/*! <%= pkg.name %> - v<%= pkg.version %> */',
                 separator: ';\n',
             },
-            all: {
+            pkg: {
+                src: ['dist/panels.min.js', 'components/velocity/velocity.min.js'],
+                dest: 'dist/panels.pkg.min.js',
+            },
+            pkgall: {
                 src: ['dist/panels.min.js', 'components/velocity/velocity.min.js', 'components/handlebars/handlebars.min.js', 'components/imagesloaded/imagesloaded.pkgd.min.js'],
-                dest: 'dist/panels.packaged.min.js',
+                dest: 'dist/panels.pkg.all.min.js',
             },
         },
     });
@@ -71,6 +75,6 @@ module.exports = function (grunt) {
 
     // tasks
     grunt.registerTask('dist', [
-        'uglify:all', 'copy:all', 'usebanner:all', 'concat:all'
+        'uglify:all', 'copy:all', 'usebanner:all', 'concat:pkg', 'concat:pkgall'
     ]);
 };
