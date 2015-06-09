@@ -16,7 +16,7 @@ Built to display a collection of panels, ***panels.js*** can be creatively appli
 ## Demos
 [Multiple panels stacked](http://bcorreia.com/projects/panels.js/src/demo-top-stacked.html)<br />
 [Single panel between rows](http://bcorreia.com/projects/panels.js/src/demo-between-rows.html)<br />
-[Single panel custom position](http://bcorreia.com/projects/panels.js/src/demo-position-custom.html)
+[Single panel stacked - without handlebars.js](http://bcorreia.com/projects/panels.js/src/demo-top-stacked-no-handlebars.html)
 
 ---
 ## Documentation
