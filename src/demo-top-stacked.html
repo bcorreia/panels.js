@@ -6,40 +6,32 @@
 
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content="panels.js - A natural collection of panels" />
-    <link href='http://fonts.googleapis.com/css?family=Lora:400,700|Roboto:100,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:100,300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" media="all" href="./css/normalize.css" />
     <link rel="stylesheet" media="all" href="./css/styles.css?v=1.0" />
 </head>
 <body>
 
-    <a href="#">Close</a>
-
-    <div class="selector">
+    <div class="demo">
         <!-- stage template -->
         <script data-role="stage" type="text/x-handlebars-template">
             {{#each items}}
-                <figure class="item">
-                    <img src="{{preview}}" />
-                </figure>
+                <div class="item">
+                    {{character}}
+                </div>
             {{/each}}
         </script>
 
         <!-- panel template -->
         <script data-role="panel" type="text/x-handlebars-template">
             <div class="content">
-                <div>
-                    <figure>
-                        <img src="{{original}}" />
-                    </figure>
-                </div>
-                <div>
-                    <a href="#" class="close text-hide" data-role="close">Close</a>
-                    <h1>{{title}}</h1>
-                    <p>{{body}}</p>
-                    <div class="buttons">
-                        <a class="-button" data-role="previous" href="#">Prev</a>
-                        <a class="-button" data-role="next" href="#">Next</a>
-                    </div>
+                <a href="#" class="close text-hide" data-role="close">Close</a>
+                <h1>{{h1}}</h1>
+                <h2>{{h2}}</h2>
+                <div>{{{body}}}</div>
+                <div class="buttons">
+                    <a class="-button" data-role="previous" href="#">Prev</a>
+                    <a class="-button" data-role="next" href="#">Next</a>
                 </div>
             </div>
         </script>
@@ -64,18 +56,16 @@
             };
         };
 
-        getJSON('./dataset/dataset-example.json', function(data) {
-            var panels = new Panels(document.querySelector('.selector'), {
+        getJSON('./dataset/dataset.json', function(data) {
+            var panels = new Panels(document.querySelector('.demo'), {
                 context: data,
                 panel: {
                     position: "top"
+                },
+                scroll: {
+                    offset: 12
                 }
             });
-
-            document.querySelector('[href="#"]').addEventListener('click', function(event) {
-                event.preventDefault();
-                panels.close();
-            })
         });
     </script>
 </body>

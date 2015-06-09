@@ -6,80 +6,175 @@
 
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content="panels.js - A natural collection of panels" />
-    <link href='http://fonts.googleapis.com/css?family=Lora:400,700|Roboto:100,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:100,300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" media="all" href="./css/normalize.css" />
     <link rel="stylesheet" media="all" href="./css/styles.css?v=1.0" />
 </head>
 <body>
 
-    <!-- demo - without handlebars templates -->
-    <div class="selector" style="dispaly:none;">
-        <figure class="item" data-query='{ "id": "0987" }'>
-            <img src="./images/01-preview.jpg">
-        </figure>
-        <figure class="item">
-            <img src="./images/02-preview.jpg">
-        </figure>
-        <figure class="item">
-            <img src="./images/03-preview.jpg">
-        </figure>
-        <figure class="item">
-            <img src="./images/04-preview.jpg">
-        </figure>
-        <figure class="item">
-            <img src="./images/05-preview.jpg">
-        </figure>
-        <figure class="item">
-            <img src="./images/06-preview.jpg">
-        </figure>
-        <figure class="item">
-            <img src="./images/07-preview.jpg">
-        </figure>
-        <figure class="item">
-            <img src="./images/08-preview.jpg">
-        </figure>
-        <figure class="item">
-            <img src="./images/09-preview.jpg">
-        </figure>
-        <figure class="item">
-            <img src="./images/10-preview.jpg">
-        </figure>
-        <figure class="item">
-            <img src="./images/11-preview.jpg">
-        </figure>
-        <figure class="item">
-            <img src="./images/12-preview.jpg">
-        </figure>
-        <figure class="item">
-            <img src="./images/13-preview.jpg">
-        </figure>
-        <figure class="item">
-            <img src="./images/14-preview.jpg">
-        </figure>
-        <figure class="item">
-            <img src="./images/15-preview.jpg">
-        </figure>
-        <figure class="item">
-            <img src="./images/16-preview.jpg">
-        </figure>
-        <figure class="item">
-            <img src="./images/17-preview.jpg">
-        </figure>
-        <figure class="item">
-            <img src="./images/18-preview.jpg">
-        </figure>
-        <figure class="item">
-            <img src="./images/19-preview.jpg">
-        </figure>
-        <figure class="item">
-            <img src="./images/20-preview.jpg">
-        </figure>
-        <figure class="item">
-            <img src="./images/21-preview.jpg">
-        </figure>
-        <figure class="item">
-            <img src="./images/22-preview.jpg">
-        </figure>
+    <div class="demo">
+        <div class="item">
+            A
+        </div>
+        <div class="item">
+            B
+        </div>
+        <div class="item">
+            C
+        </div>
+        <div class="item">
+            D
+        </div>
+        <div class="item">
+            E
+        </div>
+        <div class="item">
+            F
+        </div>
+        <div class="item">
+            G
+        </div>
+        <div class="item">
+            H
+        </div>
+        <div class="item">
+            I
+        </div>
+        <div class="item">
+            J
+        </div>
+        <div class="item">
+            K
+        </div>
+        <div class="item">
+            L
+        </div>
+        <div class="item">
+            M
+        </div>
+        <div class="item">
+            N
+        </div>
+        <div class="item">
+            O
+        </div>
+        <div class="item">
+            P
+        </div>
+        <div class="item">
+            Q
+        </div>
+        <div class="item">
+            R
+        </div>
+        <div class="item">
+            S
+        </div>
+        <div class="item">
+            T
+        </div>
+        <div class="item">
+            U
+        </div>
+        <div class="item">
+            V
+        </div>
+        <div class="item">
+            X
+        </div>
+        <div class="item">
+            Y
+        </div>
+        <div class="item">
+            Z
+        </div>
+        <div class="item">
+            0
+        </div>
+        <div class="item">
+            1
+        </div>
+        <div class="item">
+            2
+        </div>
+        <div class="item">
+            3
+        </div>
+        <div class="item">
+            4
+        </div>
+        <div class="item">
+            5
+        </div>
+        <div class="item">
+            6
+        </div>
+        <div class="item">
+            7
+        </div>
+        <div class="item">
+            8
+        </div>
+        <div class="item">
+            9
+        </div>
+        <div class="item">
+            !
+        </div>
+        <div class="item">
+            @
+        </div>
+        <div class="item">
+            #
+        </div>
+        <div class="item">
+            $
+        </div>
+        <div class="item">
+            %
+        </div>
+        <div class="item">
+            ^
+        </div>
+        <div class="item">
+            &amp;
+        </div>
+        <div class="item">
+            *
+        </div>
+        <div class="item">
+            (
+        </div>
+        <div class="item">
+            )
+        </div>
+        <div class="item">
+            _
+        </div>
+        <div class="item">
+            +
+        </div>
+        <div class="item">
+            =
+        </div>
+        <div class="item">
+            {
+        </div>
+        <div class="item">
+            }
+        </div>
+        <div class="item">
+            :
+        </div>
+        <div class="item">
+            &lt;
+        </div>
+        <div class="item">
+            &gt;
+        </div>
+        <div class="item">
+            ?
+        </div>
     </div>
 
     <!-- dependencies -->
@@ -100,16 +195,18 @@
             };
         };
 
-        getJSON('./dataset/dataset-example.json', function(data) {
-            var panels = new Panels(document.querySelector('.selector'), {
+        getJSON('./dataset/dataset.json', function(data) {
+            var panels = new Panels(document.querySelector('.demo'), {
                 handlebars: false,
-                url: "./dataset/example.html",
+                url: "./dataset/no-handlebars.html",
                 panel: {
-                    position: "between rows"
+                    position: "top"
+                },
+                scroll: {
+                    offset: 12
                 }
             });
         });
-
     </script>
 </body>
 </html>
