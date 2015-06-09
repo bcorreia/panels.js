@@ -9,6 +9,7 @@ var Panels = (function() {
     'use strict';
 
     window.Velocity = window.Velocity || $.fn.velocity;
+    window.imagesLoaded = window.imagesLoaded || function(arg, callback) { return callback() };
 
     /**
      * vars: stack, stage and panel
@@ -17,7 +18,7 @@ var Panels = (function() {
      *
      */
     var stack = [],
-        stage = { wrapper: {}, items: {} },
+        stage = {},
         panel = {};
 
     /**
@@ -95,7 +96,7 @@ var Panels = (function() {
             Velocity(document.body, 'scroll', {
                 duration: settings.speed,
                 easing: settings.easing,
-                offset: element.getBoundingClientRect().top + window.scrollY
+                offset: element.getBoundingClientRect().top + window.scrollY - settings.offset
             });
         }
     };
@@ -208,15 +209,14 @@ var Panels = (function() {
                 // referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling); insertAfter
             break;
 
-            case "over stage":
-                this.style.cssText = 'opacity:0;';
+            case "top":
+                this.style.cssText = properties;
                 html = stage.wrapper.insertBefore(this, stage.wrapper.firstChild);
                 // stage.wrapper.insertAdjacentHTML('afterbegin', this.outerHTML) prepend
             break;
 
-            default: // top
-                this.style.cssText = properties;
-                html = stage.wrapper.insertBefore(this, stage.wrapper.firstChild);
+            default: // custom
+                html = document.body.insertBefore(this, settings.panel.position);
                 // stage.wrapper.insertAdjacentHTML('afterbegin', this.outerHTML) prepend
         }
 
@@ -306,20 +306,16 @@ var Panels = (function() {
      *
      */
     panel.route = function(callback) {
-        // hide stage elements before add panel
-        if ( settings.panel.position === "over stage" ) {
-            for (var i = 0; i < stage.items.length; i++) {
-                stage.items[i].style.display = 'none';
-            };
-            return callback();
-        }
-
         if ( !stack.length || (settings.panel.stackable && settings.panel.position === "top") ) {
             return callback();
         }
 
         // !stackable: close before insert
-        Panels.prototype.close(undefined, function() {
+        if ( stack.length ) {
+            var element = stack[stack.length -1];
+        }
+
+        Panels.prototype.close(element, function() {
             return callback();
         });
     };
@@ -358,11 +354,13 @@ var Panels = (function() {
         }
 
         if ( next === null || next.classList.contains('on') ) {
-            this.querySelector('[data-role="next"]').classList.add('disabled');
+            var element = this.querySelector('[data-role="next"]');
+            element && element.classList.add('disabled');
         }
 
         if ( previous === null || previous.classList.contains('on') || !previous.classList.contains('item') ) {
-            this.querySelector('[data-role="previous"]').classList.add('disabled');
+            var element = this.querySelector('[data-role="previous"]');
+            element && element.classList.add('disabled');
         }
     };
 
@@ -464,32 +462,21 @@ var Panels = (function() {
 
         /**
          * close
-         * @param: {Object} panel element (if undefined, last array item is used)
+         * @param: {Object} panel element
          * @param: {Object} function
          * @return undefined, or callback on animation ends
          *
          */
         close: function(element, callback) {
-            var options = { opacity: 0 };
+            var options = { opacity: 0, height: 0 };
 
-            element = element || (stack.pop());
             if ( element === undefined ) {
                 return;
             }
 
-            if ( settings.panel.position === "top" || settings.panel.position === "between rows" ) {
-                options.height = 0;
-            }
-
-            if ( settings.panel.position === "over stage" ) {
-                for (var i = 0; i < stage.items.length; i++) {
-                    stage.items[i].removeAttribute("style");
-                };
-            }
-
             Velocity(element, options, settings.panel.speed, settings.panel.easing, function() {
                 stage.off.call(element.getAttribute("data-paired")); // update stage
-                element.parentNode.removeChild(element); // remove
+                element.parentNode && element.parentNode.removeChild(element); // remove
                 stack.pop();
 
                 // callback fn
