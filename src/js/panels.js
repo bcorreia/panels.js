@@ -10,7 +10,7 @@ var Panels = (function() {
      *
      */
     var stack = [],
-        stage = { wrapper: {}, items: {} },
+        stage = {},
         panel = {};
 
     /**
@@ -88,7 +88,7 @@ var Panels = (function() {
             Velocity(document.body, 'scroll', {
                 duration: settings.speed,
                 easing: settings.easing,
-                offset: element.getBoundingClientRect().top + window.scrollY
+                offset: element.getBoundingClientRect().top + window.scrollY - settings.offset
             });
         }
     };
@@ -202,8 +202,7 @@ var Panels = (function() {
             break;
 
             case "over stage":
-                this.style.cssText = 'opacity:0;';
-                html = stage.wrapper.insertBefore(this, stage.wrapper.firstChild);
+                html = document.body.insertBefore(this, document.body.firstChild);
                 // stage.wrapper.insertAdjacentHTML('afterbegin', this.outerHTML) prepend
             break;
 
@@ -299,15 +298,7 @@ var Panels = (function() {
      *
      */
     panel.route = function(callback) {
-        // hide stage elements before add panel
-        if ( settings.panel.position === "over stage" ) {
-            for (var i = 0; i < stage.items.length; i++) {
-                stage.items[i].style.display = 'none';
-            };
-            return callback();
-        }
-
-        if ( !stack.length || (settings.panel.stackable && settings.panel.position === "top") ) {
+        if ( !stack.length || (settings.panel.stackable && settings.panel.position === "top") || settings.panel.position === "over stage" ) {
             return callback();
         }
 
@@ -355,11 +346,13 @@ var Panels = (function() {
         }
 
         if ( next === null || next.classList.contains('on') ) {
-            this.querySelector('[data-role="next"]').classList.add('disabled');
+            var element = this.querySelector('[data-role="next"]');
+            element && element.classList.add('disabled');
         }
 
         if ( previous === null || previous.classList.contains('on') || !previous.classList.contains('item') ) {
-            this.querySelector('[data-role="previous"]').classList.add('disabled');
+            var element = this.querySelector('[data-role="previous"]');
+            element && element.classList.add('disabled');
         }
     };
 
@@ -467,29 +460,16 @@ var Panels = (function() {
          *
          */
         close: function(element, callback) {
-            var options = { opacity: 0 };
+            var options = { opacity: 0, height: 0 };
 
             if ( element === undefined ) {
                 return;
             }
 
-            if ( settings.panel.position === "top" || settings.panel.position === "between rows" ) {
-                options.height = 0;
-            }
-
-            if ( settings.panel.position === "over stage" ) {
-                for (var i = 0; i < stage.items.length; i++) {
-                    stage.items[i].removeAttribute("style");
-                };
-            }
-
-            console.log(stack);
             Velocity(element, options, settings.panel.speed, settings.panel.easing, function() {
                 stage.off.call(element.getAttribute("data-paired")); // update stage
-                element.parentNode.removeChild(element); // remove
+                element.parentNode && element.parentNode.removeChild(element); // remove
                 stack.pop();
-
-                console.log(stack);
 
                 // callback fn
                 settings.onAfter("close", element);
