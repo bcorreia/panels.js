@@ -2,6 +2,7 @@ var Panels = (function() {
     'use strict';
 
     window.Velocity = window.Velocity || $.fn.velocity;
+    window.imagesLoaded = window.imagesLoaded || function(arg, callback) { return callback() };
 
     /**
      * vars: stack, stage and panel
