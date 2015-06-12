@@ -1,5 +1,5 @@
 /**
- * panels.js - version 1.7.1
+ * panels.js - version 1.7.2
  *
  * https://github.com/bcorreia/panels.js.git
  * Bruno Correia - mail@bcorreia.com
