@@ -12,6 +12,7 @@ body                               { background:#2B303B; font: normal normal 300
 --------------------------------------------- */
 .panel                             { width: 100%; position: relative; overflow: hidden; background-color: #94B2AC; }
 .panel h1                          { font-size: 4.236em; line-height: 1.2; margin: 0 0 45px 0; }
+.panel h1 span                     { opacity: .375 }
 .panel h2                          { font-size: 2.618em; line-height: 1.2; margin: 0 0 27px 0; }
 .panel p                           { font-size: 1em; line-height: 1.6; margin: 0 0 18px 0; }
 .panel .content                    { padding:32px; }
