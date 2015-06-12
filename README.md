@@ -10,7 +10,8 @@ Built to display a collection of panels, ***panels.js*** can be creatively appli
 
 1. Animation performance with [velocity](https://github.com/julianshapiro/velocity) (dependency)<br />
 1. Template loading with [handlebars](http://handlebarsjs.com) (optional)<br />
-1. Image(s) loaded events with [imagesLoaded](https://github.com/desandro/imagesloaded) (optional)
+1. Images loaded events with [imagesLoaded](https://github.com/desandro/imagesloaded) (optional)
+1. Responsive. No fixed height, no min-height.
 1. jQuery is **not required**
 
 ## Demos
@@ -31,7 +32,7 @@ Built to display a collection of panels, ***panels.js*** can be creatively appli
 - [imagesLoaded](#desandros-imagesloaded)
 
 ## Getting Started
-You may install using package managers, or download project [archive](https://github.com/bcorreia/panels.js/archive/master.zip).<br />
+You may install panels.js using package managers, or download project [archive](https://github.com/bcorreia/panels.js/archive/master.zip).<br />
 Installing via `bower` will bring in the dependencies as well.
 ```bash
 bower install panels.js
@@ -133,7 +134,7 @@ onAfter: function(event, element) {}    // called after animation ends
 
 // Open 2nd panel
 var panels = new Panels(document.querySelector('.selector'));
-panels.open(document.querySelector('figure:nth-child(2)'));
+panels.open(document.querySelector('div:nth-child(2)'));
 
 // Close all stacked panels
 document.querySelector('[href="#"]').addEventListener('click', function(event) {
