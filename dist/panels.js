@@ -1,5 +1,5 @@
 /**
- * panels.js - version 1.7.2
+ * panels.js - version 1.7.3
  *
  * https://github.com/bcorreia/panels.js.git
  * Bruno Correia - mail@bcorreia.com
@@ -111,7 +111,6 @@ var Panels = (function() {
     }
 
     /**
-     * scroll
      * @param {Object} dom element
      * @param {Object} settings
      * @return undefined
@@ -144,11 +143,6 @@ var Panels = (function() {
                 stage = this.stage,
                 items;
 
-            var init = new Event('init');
-            document.addEventListener('init', function() {
-                settings.onInit(); // callback fn
-            });
-
             // compile stage template
             if ( settings.handlebars ) {
                 var template = Handlebars.compile(document.querySelector('[data-role="stage"]').innerHTML),
@@ -159,14 +153,14 @@ var Panels = (function() {
                 html && stage.insertAdjacentHTML('afterbegin', html);
                 stage.style.opacity = 0;
                 imagesLoaded(stage, function() {
-                    document.dispatchEvent(init);
+                    settings.onInit(); // callback fn
                     Velocity(stage, { opacity: 1 }, settings.stage.speed, function() {
                         stage.removeAttribute('style');
                     });
                 });
             } else {
                 html && stage.insertAdjacentHTML('afterbegin', html);
-                document.dispatchEvent(init);
+                settings.onInit(); // callback fn
             }
 
             // set items
@@ -291,12 +285,10 @@ var Panels = (function() {
          * @return undefined
          *
          */
-        addlisteners: function(html) {
-            var panel = html,
-                stage = this.stage,
-                stack = this.stack;
-
-            var elements = panel.querySelectorAll('[data-role]');
+        addlisteners: function(panel) {
+            var stage = this.stage,
+                stack = this.stack,
+                elements = panel.querySelectorAll('[data-role]');
 
             if ( elements === null ) {
                 return;
@@ -335,32 +327,6 @@ var Panels = (function() {
         },
 
         /**
-         * route
-         * @param {Object} function
-         * @return callback function
-         *
-         */
-        route: function(callback) {
-            var settings = this.settings,
-                stage = this.stage,
-                stack = this.stack;
-
-            if ( !stack.length || (settings.panel.stackable && settings.panel.position === "top") ) {
-                return callback();
-            }
-
-            // !stackable: close before insert
-            if ( stack.length ) {
-                var element = stack[stack.length -1];
-            }
-
-            this.close(element, function() {
-                return callback();
-            });
-        },
-
-        /**
-         * seek
          * determine previous and next, disable when applicable
          * @param panel: dom element
          * @return undefined
@@ -387,19 +353,18 @@ var Panels = (function() {
         },
 
         /**
-         * open
          * @param: {Object} dom element: 'stage > .item'
          * @return undefined, or callback on animation ends
          *
          */
         open: function(element, callback) {
             var settings = this.settings,
-                stage = this.stage;
+                stack = this.stack;
 
             on.call(element);
 
-            this.route(function() {
-                var html = this.prepare(element, function() {
+            var ready = function() {
+                var panel = this.prepare(element, function() {
                     var options = { opacity: 1 };
 
                     if ( settings.panel.position === "top" || settings.panel.position === "between rows" ) {
@@ -417,19 +382,24 @@ var Panels = (function() {
                             scroll(element, settings.scroll); // scroll after panel has opened
                         }
 
-                        // callback fn
-                        settings.onAfter("open", this);
+                        settings.onAfter("open", this); // callback fn
                         return callback && callback();
                     }.bind(this));
                 });
 
-                // callback fn
-                settings.onBefore("open", html);
-            }.bind(this));
+                settings.onBefore("open", panel); // callback fn
+            }.bind(this);
+
+            if ( stack.length && settings.panel.position !== "top" || stack.length && !settings.panel.stackable ) {
+                this.close(stack[stack.length -1], function() {
+                    ready();
+                });
+                return;
+            }
+            return ready();
         },
 
         /**
-         * close
          * @param: {Object} panel element
          * @param: {Object} function
          * @return undefined, or callback on animation ends
@@ -462,7 +432,6 @@ var Panels = (function() {
 
         /**
          * reset
-         * @param ø
          * @return undefined
          *
          */
@@ -482,7 +451,7 @@ var Panels = (function() {
     }
 
     /**
-     * Panels: constructor
+     * constructor
      * @param {Object} dom element: stage
      * @param {Object} options
      * @return undefined
