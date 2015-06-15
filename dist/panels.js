@@ -1,5 +1,5 @@
 /**
- * panels.js - version 1.7.3
+ * panels.js - version 1.7.4
  *
  * https://github.com/bcorreia/panels.js.git
  * Bruno Correia - mail@bcorreia.com
@@ -37,7 +37,7 @@ var Panels = (function() {
     };
 
     /**
-     * add '.on' to '.item' element
+     * add '.on' to element
      * @return undefined
      *
      */
@@ -46,7 +46,7 @@ var Panels = (function() {
     }
 
     /**
-     * remove '.on'
+     * remove '.on' from element
      * @return undefined
      *
      */
@@ -68,7 +68,7 @@ var Panels = (function() {
 
     /**
      * find last element on the same row
-     * @return {Object} dom element
+     * @return DOM element
      *
      */
     function find() {
@@ -85,7 +85,7 @@ var Panels = (function() {
     /**
      * deep extend: merge defaults with options
      * @param {Objects} objects
-     * @returns {Object} merged values of default settings and options
+     * @return {Object} merged values of default settings and options
      *
      */
     function extend(objects) {
@@ -111,7 +111,7 @@ var Panels = (function() {
     }
 
     /**
-     * @param {Object} dom element
+     * @param DOM element
      * @param {Object} settings
      * @return undefined
      */
@@ -125,16 +125,10 @@ var Panels = (function() {
         }
     }
 
-    /**
-     * panels: methods
-     * @type {Object}
-     *
-     */
     var panels = {
 
         /**
          * init
-         * @param ø
          * @return undefined
          *
          */
@@ -163,10 +157,10 @@ var Panels = (function() {
                 settings.onInit(); // callback fn
             }
 
-            // set items
             items = stage.querySelectorAll('.item');
 
-            // enumerate: add data-position attribute elements (pair/position)
+            // enumerate:
+            // add data-position attribute to items
             // add event listeners
             for (var i = 0; i < items.length; i++) {
                 items[i].setAttribute('data-position', i);
@@ -182,10 +176,9 @@ var Panels = (function() {
         },
 
         /**
-         * prepare (invoked before insert)
-         * @param {Object} dom element '.item'
-         * @param {Object} callback function
-         * @return undefined
+         * @param DOM element '.item'
+         * @param callback fn
+         * @return DOM element added to document
          *
          */
         prepare: function(element, callback) {
@@ -231,11 +224,11 @@ var Panels = (function() {
         },
 
         /**
-         * insert prepared panel to document
-         * @param {Object} panel
-         * @param {Object} element '.item'
-         * @param {Object} callback function
-         * @return {Object} dom element added to document
+         * insert panel to document
+         * @param DOM element '.panel'
+         * @param DOM element '.item'
+         * @param callback fn
+         * @return DOM element added to document
          *
          */
         insert: function(panel, element, callback) {
@@ -243,7 +236,7 @@ var Panels = (function() {
                 stage = this.stage,
                 stack = this.stack;
 
-            var el, placement,
+            var el, placement, items,
                 properties = 'opacity:0; height:0';
 
             // wrap -inner
@@ -266,7 +259,39 @@ var Panels = (function() {
             }
 
             stack.push(el); // stack
-            this.addlisteners(el); // add event listener
+            items = panel.querySelectorAll('[data-role]');
+
+            if ( items ) {
+                for (var i = 0; i < items.length; i++) {
+                    items[i].addEventListener('click', function(event) {
+                        event.preventDefault();
+
+                        var evt = new Event('click'),
+                            position = stack[stack.length -1].getAttribute('data-paired'),
+                            element = stage.querySelector('[data-position="'+ position +'"]'),
+                            previous = element.previousElementSibling,
+                            next = element.nextElementSibling;
+
+                        while ( next !== null && next.classList.contains('panel') ) {
+                            next = next.nextElementSibling;
+                        }
+
+                        switch(event.target.getAttribute('data-role')) {
+                            case "close":
+                                this.close(panel);
+                            break;
+
+                            case "previous":
+                                previous.dispatchEvent(evt);
+                            break;
+
+                            case "next":
+                                next.dispatchEvent(evt);
+                            break;
+                        }
+                    }.bind(this));
+                }
+            }
 
             if ( settings.panel.position === "top" || settings.panel.position === "between rows" ) {
                 this.seek(el); // disable prev and next when applicable
@@ -280,55 +305,8 @@ var Panels = (function() {
         },
 
         /**
-         * add events listeners
-         * @param html: panel dom element
-         * @return undefined
-         *
-         */
-        addlisteners: function(panel) {
-            var stage = this.stage,
-                stack = this.stack,
-                elements = panel.querySelectorAll('[data-role]');
-
-            if ( elements === null ) {
-                return;
-            }
-
-            for (var i = 0; i < elements.length ; i++) {
-                elements[i].addEventListener('click', function(event) {
-                    var role = event.target.getAttribute('data-role');
-                    event.preventDefault();
-
-                    var event = new Event('click'),
-                        position = stack[stack.length -1].getAttribute('data-paired'),
-                        element = stage.querySelector('[data-position="'+ position +'"]'),
-                        previous = element.previousElementSibling,
-                        next = element.nextElementSibling;
-
-                    while ( next !== null && next.classList.contains('panel') ) {
-                        next = next.nextElementSibling;
-                    }
-
-                    switch(role) {
-                        case "close":
-                            this.close(panel);
-                        break;
-
-                        case "previous":
-                            previous.dispatchEvent(event);
-                        break;
-
-                        case "next":
-                            next.dispatchEvent(event);
-                        break;
-                    }
-                }.bind(this));
-            };
-        },
-
-        /**
          * determine previous and next, disable when applicable
-         * @param panel: dom element
+         * @param DOM element '.panel'
          * @return undefined
          *
          */
@@ -353,7 +331,8 @@ var Panels = (function() {
         },
 
         /**
-         * @param: {Object} dom element: 'stage > .item'
+         * @param DOM element: '.item'
+         * @param callback fn
          * @return undefined, or callback on animation ends
          *
          */
@@ -400,8 +379,8 @@ var Panels = (function() {
         },
 
         /**
-         * @param: {Object} panel element
-         * @param: {Object} function
+         * @param DOM element '.panel'
+         * @param callback fn
          * @return undefined, or callback on animation ends
          *
          */
@@ -410,24 +389,20 @@ var Panels = (function() {
                 stage = this.stage,
                 stack = this.stack;
 
-            var options = { opacity: 0, height: 0 };
-
             if ( element === undefined ) {
                 return;
             }
 
-            Velocity(element, options, settings.panel.speed, settings.panel.easing, function() {
+            Velocity(element, { opacity: 0, height: 0 }, settings.panel.speed, settings.panel.easing, function() {
                 off.call(stage, element.getAttribute("data-paired"));
                 element.parentNode && element.parentNode.removeChild(element); // remove
                 stack.pop();
 
-                // callback fn
-                settings.onAfter("close", element);
+                settings.onAfter("close", element); // callback fn
                 return callback && callback();
             });
 
-            // callback fn
-            settings.onBefore("close", element);
+            settings.onBefore("close", element); // callback fn
         },
 
         /**
@@ -452,7 +427,7 @@ var Panels = (function() {
 
     /**
      * constructor
-     * @param {Object} dom element: stage
+     * @param DOM element
      * @param {Object} options
      * @return undefined
      *
