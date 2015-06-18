@@ -2,7 +2,7 @@
 * :focus,
 * :active                               { outline: none !important; -moz-outline-style: none; }
 
-body                                    { background-color: #68BE87; background-image: -webkit-linear-gradient(135deg, #68BE87, #75beaa); background-image: linear-gradient(-45deg, #68BE87, #75beaa);}
+body                                    { background-color: #68BE87; background-image: -webkit-linear-gradient(135deg, #68BE87, #8BC8B7); background-image: linear-gradient(-45deg, #68BE87, #8BC8B7);}
 body                                    { font: normal normal 300 16px/1.6 'Roboto', Helvetica, Arial, Verdana, sans-serif; color: #4F5F46; }
 h1                                      { font: normal normal 100 4.768em/1.2 'Roboto', Helvetica, Arial, Verdana, sans-serif; color: #FFF; margin: 0; }
 h2                                      { font: normal normal 300 2.618em/1.2 'Roboto', Helvetica, Arial, Verdana, sans-serif; color:#859894; margin: 0; }
