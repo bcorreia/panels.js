@@ -1,62 +1,25 @@
-/* normalize - reset
---------------------------------------------- */
-*, *:before, *:after               { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
+*, *:before, *:after                    { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
 * :focus,
-* :active                          { outline: none !important; -moz-outline-style: none; }
+* :active                               { outline: none !important; -moz-outline-style: none; }
 
-/* demo styles
---------------------------------------------- */
-body                               { background:#2B303B; font: normal normal 300 1em/1.6 'Roboto', sans-serif; letter-spacing: 0.05em; color: #EAEAEA; }
+body                                    { background-color: #68BE87; background-image: -webkit-linear-gradient(135deg, #68BE87, #75beaa); background-image: linear-gradient(-45deg, #68BE87, #75beaa);}
+body                                    { font: normal normal 300 16px/1.6 'Roboto', Helvetica, Arial, Verdana, sans-serif; color: #4F5F46; }
+h1                                      { font: normal normal 100 4.768em/1.2 'Roboto', Helvetica, Arial, Verdana, sans-serif; color: #FFF; margin: 0; }
+h2                                      { font: normal normal 300 2.618em/1.2 'Roboto', Helvetica, Arial, Verdana, sans-serif; color:#859894; margin: 0; }
+p                                       { font-size: 1.25em; margin: 0; }
+small                                   { font-size: .75em; padding: .25em; }
+a                                       { text-decoration: none; color: #FFF; opacity: .75; }
 
-/* panel
---------------------------------------------- */
-.panel                             { width: 100%; position: relative; overflow: hidden; background-color: #94B2AC; }
-.panel h1                          { font-size: 4.236em; line-height: 1.2; margin: 0 0 45px 0; }
-.panel h1 span                     { opacity: .375 }
-.panel h2                          { font-size: 2.618em; line-height: 1.2; margin: 0 0 27px 0; }
-.panel p                           { font-size: 1em; line-height: 1.6; margin: 0 0 18px 0; }
-.panel .content                    { padding:32px; }
+section                                 { height: 100vh; width: 100vw; padding: 2em 2em 8em 2em; display: flex; display: -webkit-flex; align-items: center; -webkit-align-items: center; justify-content:center; -webkit-justify-content:center; flex-direction: column; -webkit-flex-direction: column; }
+section > p:last-child                  { position: absolute; bottom: 4px; right: 4px; display:block;  }
+.resources p span                       { font-size: .75em; background: #B4DAC6; padding: .25em; }
+.resources a                            { color: #4F5F46; }
 
-@media (min-width: 768px) {
-    .panel .content                { padding: 64px; }
-}
+.demo                                   { padding:1em 0 3em 0; display: flex; display: -webkit-flex; align-items: center; -webkit-align-items: center; justify-content:center; -webkit-justify-content:center; flex-direction: row; -webkit-flex-direction: row; }
+.demo p                                 { margin: 0 12px 0 0; }
+.demo a                                 { margin:0 4px; letter-spacing: 1; background: #777; width: 36px; height: 36px; border-radius: 50%; display: flex; display: -webkit-flex; align-items: center; -webkit-align-items: center; justify-content:center; -webkit-justify-content:center; transition: opacity .5s; color: #6CBD8B; }
+.demo a:hover                           { opacity: .375; }
 
-/* stage
---------------------------------------------- */
-.demo                              { display: flex; display: -webkit-flex; display: -ms-flexbox; -webkit-flex-flow: row wrap; -ms-flex-flow: row wrap; flex-flow: row wrap; }
-.demo                              { border:12px solid #FFF; min-height: 100vh; }
-.demo .item                        { position: relative; width: 33.333%; cursor: pointer; transition: opacity 1.5s ease; margin: 0; text-align: center; padding:12px; }
-.demo .item                        { display: flex; display: -webkit-flex; display: -ms-flexbox; align-items: center; -webkit-align-items: center; justify-content:center; -webkit-justify-content:center; -ms-flex-pack:justify; }
-.demo .item                        { font-size: 4.236em; color: #555; transition: all .5s ease; }
-.demo .item:hover:not(.on)         { background-color: #FF9900; }
-.demo .item.on                     { color:#FF9900; cursor: default; }
-
-@media (min-width: 768px) {
-    .demo .item                    { width: 25%; }
-}
-@media (min-width: 992px) {
-    .demo .item                    { width: 20%; }
-}
-@media (min-width: 1200px) {
-    .demo .item                    { width: 14.285%; }
-}
-
-/* over stage -alt
---------------------------------------------- */
-.-alt                              { min-height: 100vh; }
-
-/* buttons
---------------------------------------------- */
-.buttons                           { padding: 32px 0 0 0; }
-.-button                           { color: #EAEAEA; text-decoration: none; text-transform: uppercase; display: inline-block; padding: 12px 28px; background: #4AB1D1; font-size: 0.8em; transition: background .5s; }
-.-button:hover                     { background: #2B303B; }
-.-button.disabled                  { display: none !important; }
-
-/* close
---------------------------------------------- */
-.close                             { position: absolute; top: 18px; right: 18px; background: url("../images/close.png") 0 0 no-repeat; background-size: contain; width: 34px; height: 34px; transition: opacity .5s; }
-.close:hover                       { opacity: .5; }
-
-/* helper
---------------------------------------------- */
-.text-hide                         { font: 0/0 a; color: transparent; text-shadow: none; background-color: transparent; border: 0; }
+.github                                 { background: url("http://bcorreia.com/github.png")center center no-repeat; height: 60px; width: 60px; background-size: contain; opacity: .5; transition: opacity 1.25s ease; display: block; margin: 0 auto; }
+.github:hover                           { opacity: .9; }
+.text-hide                              { font: ~"0/0" a; color: transparent; background-color: transparent; }
