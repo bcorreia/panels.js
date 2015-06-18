@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/bcorreia/panels.js.svg?branch=master)](https://travis-ci.org/bcorreia/panels.js)
 
 ---
-**A natural collection of panels.**
+**Add templated panels to your layout.**
 
 Built to display a collection of panels, ***panels.js*** can be creatively applied to e-commerce projects, portfolio websites, comparison charts and other.
 

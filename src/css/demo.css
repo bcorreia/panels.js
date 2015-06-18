@@ -6,18 +6,22 @@
 
 /* demo styles
 --------------------------------------------- */
-body                               { background:#2B303B; font: normal normal 300 1em/1.6 'Roboto', sans-serif; letter-spacing: 0.05em; color: #EAEAEA; }
+body                               { background:#2B303B; font: normal normal 300 16px/1.6 'Roboto', sans-serif; letter-spacing: 0.05em; color: #EAEAEA; }
+@media (min-width: 768px) {
+    body                           { font-size: 24px; }
+}
 
 /* panel
 --------------------------------------------- */
-.panel                             { width: 100%; position: relative; overflow: hidden; background-color: #94B2AC; }
-.panel h1                          { font-size: 4.236em; line-height: 1.2; margin: 0 0 45px 0; }
-.panel h1 span                     { opacity: .375 }
-.panel h2                          { font-size: 2.618em; line-height: 1.2; margin: 0 0 27px 0; }
+.panel                             { width: 100%; position: relative; overflow: hidden; background-color: #86B09F; }
+.panel h1                          { font-size: 2.369em; line-height: 1.4; font-weight: 100; margin: 0 0 45px 0; }
+.panel h1 span                     { color:#52747E; font-weight: 300; }
+.panel h2                          { font-size: 1.333em; line-height: 1.4; margin: 0 0 1em 0; }
 .panel p                           { font-size: 1em; line-height: 1.6; margin: 0 0 18px 0; }
 .panel .content                    { padding:32px; }
 
 @media (min-width: 768px) {
+    .panel p                       { font-size: .67em; }
     .panel .content                { padding: 64px; }
 }
 
@@ -27,7 +31,7 @@ body                               { background:#2B303B; font: normal normal 300
 .demo                              { border:12px solid #FFF; min-height: 100vh; }
 .demo .item                        { position: relative; width: 33.333%; cursor: pointer; transition: opacity 1.5s ease; margin: 0; text-align: center; padding:12px; }
 .demo .item                        { display: flex; display: -webkit-flex; display: -ms-flexbox; align-items: center; -webkit-align-items: center; justify-content:center; -webkit-justify-content:center; -ms-flex-pack:justify; }
-.demo .item                        { font-size: 4.236em; color: #555; transition: all .5s ease; }
+.demo .item                        { font-size: 3.157em; color: #555; transition: all .5s ease; }
 .demo .item:hover:not(.on)         { background-color: #FF9900; }
 .demo .item.on                     { color:#FF9900; cursor: default; }
 
@@ -48,9 +52,13 @@ body                               { background:#2B303B; font: normal normal 300
 /* buttons
 --------------------------------------------- */
 .buttons                           { padding: 32px 0 0 0; }
-.-button                           { color: #EAEAEA; text-decoration: none; text-transform: uppercase; display: inline-block; padding: 12px 28px; background: #4AB1D1; font-size: 0.8em; transition: background .5s; }
+.-button                           { color: #EAEAEA; text-decoration: none; text-transform: uppercase; display: inline-block; padding: 12px 28px; background: #52747E; font-size: 0.8em; transition: background .5s; }
 .-button:hover                     { background: #2B303B; }
 .-button.disabled                  { display: none !important; }
+
+@media (min-width: 768px) {
+    .-button                       { font-size: .625em; }
+}
 
 /* close
 --------------------------------------------- */

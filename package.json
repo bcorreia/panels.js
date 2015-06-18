@@ -1,7 +1,7 @@
 {
   "name": "panels.js",
   "version": "1.7.4",
-  "description": "A natural collection of panels.",
+  "description": "Add templated panels to your layout.",
   "main": "dist/panels.js",
   "repository": {
     "type": "git",
