@@ -17,7 +17,7 @@ section > p:last-child                  { position: absolute; bottom: 4px; right
 
 .demo                                   { padding:1em 0 3em 0; display: flex; display: -webkit-flex; align-items: center; -webkit-align-items: center; justify-content:center; -webkit-justify-content:center; flex-direction: row; -webkit-flex-direction: row; }
 .demo p                                 { margin: 0 12px 0 0; }
-.demo a                                 { margin:0 4px; letter-spacing: 1; background: #777; width: 36px; height: 36px; border-radius: 50%; display: flex; display: -webkit-flex; align-items: center; -webkit-align-items: center; justify-content:center; -webkit-justify-content:center; transition: opacity .5s; color: #6CBD8B; }
+.demo a                                 { margin:0 4px; background: #777; width: 36px; height: 36px; border-radius: 50%; display: flex; display: -webkit-flex; align-items: center; -webkit-align-items: center; justify-content:center; -webkit-justify-content:center; transition: opacity .5s; color: #8DC2A1; }
 .demo a:hover                           { opacity: .375; }
 
 .github                                 { background: url("http://bcorreia.com/github.png")center center no-repeat; height: 60px; width: 60px; background-size: contain; opacity: .5; transition: opacity 1.25s ease; display: block; margin: 0 auto; }
