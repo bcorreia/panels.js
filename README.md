@@ -11,7 +11,7 @@ Built to display a collection of panels, ***panels.js*** can be creatively appli
 1. Animation performance with [velocity](https://github.com/julianshapiro/velocity) (dependency)<br />
 1. Semantic template with [handlebars](http://handlebarsjs.com) (optional)<br />
 1. Images loaded events with [imagesLoaded](https://github.com/desandro/imagesloaded) (optional)
-1. Responsive. (no fixed height, no min-height)
+1. Fully responsive. (no fixed height, no min-height)
 1. jQuery is **not required**
 
 ## Demos
