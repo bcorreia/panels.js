@@ -9,7 +9,7 @@
 Built to display a collection of panels, ***panels.js*** can be creatively applied to e-commerce projects, portfolio websites, comparison charts and other.
 
 1. Animation performance with [velocity](https://github.com/julianshapiro/velocity) (dependency)<br />
-1. Template loading with [handlebars](http://handlebarsjs.com) (optional)<br />
+1. Semantic template with [handlebars](http://handlebarsjs.com) (optional)<br />
 1. Images loaded events with [imagesLoaded](https://github.com/desandro/imagesloaded) (optional)
 1. Responsive. (no fixed height, no min-height)
 1. jQuery is **not required**
@@ -27,8 +27,8 @@ Built to display a collection of panels, ***panels.js*** can be creatively appli
 - [Callbacks](#callbacks)
 - [Public Methods](#public-methods)
 - [HTML data-attributes](#html-data-attributes)
-- [With Handlebars](#with-handlebars)
-- [Without Handlebars](#without-handlebars)
+- [With Handlebars](#panelsjs-with-handlebars)
+- [Without Handlebars](#panelsjs-without-handlebars)
 - [imagesLoaded](#desandros-imagesloaded)
 
 ## Getting Started
@@ -172,7 +172,7 @@ data-role="next"               <!-- next -->
 .selector .disabled      {}
 ```
 
-## With Handlebars
+## Panels.js with Handlebars
 > Handlebars provides the power necessary to build semantic templates effectively with no frustration. If you are not familiar with Handlebars, please refer to the [documentation](https://github.com/wycats/handlebars.js) or [tutorial](http://tutorialzine.com/2015/01/learn-handlebars-in-10-minutes/).
 
 ### Stage
@@ -207,7 +207,7 @@ The **stage template** uses the same context as the **panel template**.
 }
 ```
 
-## Without Handlebars
+## Panels.js without Handlebars
 > Set `url` to which ajax request will be sent. `?n=number` is automatically appended to the query string.
 
 ### Stage
