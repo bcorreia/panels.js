@@ -4,15 +4,14 @@
 [![Build Status](https://travis-ci.org/bcorreia/panels.js.svg?branch=master)](https://travis-ci.org/bcorreia/panels.js)
 
 ---
-**Add templated panels to your layout.**
+Add templated panels to your layout.<br />
+***panels.js*** can be creatively applied to e-commerce projects, portfolio websites, comparison charts and other.
 
-Built to display a collection of panels, ***panels.js*** can be creatively applied to e-commerce projects, portfolio websites, comparison charts and other.
-
+1. Semantic templates with [handlebars](http://handlebarsjs.com) (optional)<br />
+1. Images loaded events with [imagesLoaded](https://github.com/desandro/imagesloaded) (optional)<br />
 1. Animation performance with [velocity](https://github.com/julianshapiro/velocity) (dependency)<br />
-1. Semantic template with [handlebars](http://handlebarsjs.com) (optional)<br />
-1. Images loaded events with [imagesLoaded](https://github.com/desandro/imagesloaded) (optional)
 1. Fully responsive. (no fixed height, no min-height)
-1. jQuery is **not required**
+1. jQuery is **not** required
 
 ## Demos
 [Multiple panels stacked](http://bcorreia.com/projects/panels.js/src/demo-top-stacked.html)<br />
@@ -61,16 +60,16 @@ var panels = new Panels(document.querySelector('.selector'), {
         speed: 800
     },
     panel: {
-        classes: "",
-        position: "top",
+        classes: '',
+        position: 'top',
         stackable: true,
         speed: 600,
-        easing: "easeOutQuad"
+        easing: 'easeOutQuad'
     },
     scroll: {
         offset: 0,
         speed: 600,
-        easing: "easeOutQuad"
+        easing: 'easeOutQuad'
     },
     onInit: function() {},
     onBefore: function() {},
@@ -132,11 +131,11 @@ onAfter: function(event, element) {}    // called after animation ends
 
 // examples ---------------------------
 
-// Open 2nd panel
+// Open a panel
 var panels = new Panels(document.querySelector('.selector'));
 panels.open(document.querySelector('div:nth-child(2)'));
 
-// Close all stacked panels
+// Close all panels
 document.querySelector('[href="#"]').addEventListener('click', function(event) {
     event.preventDefault();
     var nodes = document.querySelectorAll('.panel');
@@ -167,7 +166,7 @@ data-role="next"               <!-- next -->
 .selector                { display: flex; flex-flow: row wrap; }
 .selector .panel         { width: 100%; position: relative; overflow: hidden; }
 
-/* optional classes */
+/* optional */
 .selector .on            {}
 .selector .disabled      {}
 ```
