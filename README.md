@@ -172,7 +172,7 @@ The **stage template** uses the same context as the **panel template**.
 ```
 
 ## Panels.js without Handlebars
-Using Panels.js without Handlebars. [**view gist**](https://gist.github.com/bcorreia/69c8418931e8fdf84042)
+Using Panels.js without Handlebars: [**view gist**](https://gist.github.com/bcorreia/69c8418931e8fdf84042)
 
 ## Desandro’s imagesLoaded
 ***Panels.js*** automatically recognizes the presence of the [imagesLoaded](https://github.com/desandro/imagesloaded) library.<br /> This library is recommended when image(s) are being loaded in your template.
