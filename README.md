@@ -4,21 +4,22 @@
 [![Build Status](https://travis-ci.org/bcorreia/panels.js.svg?branch=master)](https://travis-ci.org/bcorreia/panels.js)
 
 ---
-Add templated panels to your layout. ***Panels.js*** can be creatively applied to portfolio websites, e-commerce projects, comparison charts and other.<br />
+Add ***panels.js*** to your layout. Creatively apply it to portfolio websites, e-commerce, comparison charts and other.<br />
 
-1. Create semantic templates with Handlebars.js (optional)<br />
-1. Listen to load events with Desandro’s imagesloaded.js (optional)<br />
-1. Animation performance with Velocity.js (dependency)<br />
+1. Create semantic templates with Handlebars.js \*
+1. Animation performance with Velocity.js
 1. Responsive
 1. jQuery is **not** required
 
+\* optional
+
 ---
 ## Demo
-[**bcorreia.com/panels.js**] (http://bcorreia.com/panels.js)
+[**bcorreia.com/panels.js**](http://bcorreia.com/panels.js)
 
 ## Getting Started
 You may install panels.js using package managers, or download project [archive](https://github.com/bcorreia/panels.js/archive/master.zip).<br />
-Installing via `bower` will bring in the dependencies as well.
+Installing via `bower` will bring in any dependency as well.
 ```bash
 bower install panels.js
 npm install panels.js
@@ -37,17 +38,14 @@ var panels = new Panels(document.querySelector('.selector'), {
 
 ## Settings
 ```javascript
-handlebars: true,
 context: {},
-url: '',
 stage: {
     fade: true,
     speed: 800
 },
 panel: {
-    classes: '',
     position: 'top',
-    stackable: true,
+    classes: '',
     speed: 600,
     easing: 'easeOutQuad'
 },
@@ -63,26 +61,16 @@ onAfter: function() {}
 
 | Options | Description | Default | Type
 :--- | :--- | ---: | ---:
-| `handlebars` | Handlebars templates | `true` | `boolean`
-| `context` | Context to compile Handlebars templates | `{}` | `object`
-| `url` | URL to which ajax request is sent <sup>**[1]**</sup> | `undefined` | `string`
-| &nbsp; | |
-| `stage.fade` | Fade in on “imagesloaded” event dispatch | `true` | `boolean`
-| `stage.speed` | Fade in speed in milliseconds | `800` | `number`
-| &nbsp; | |
-| `panel.classes` | CSS class to be added to panel element | `''` | `string`
-| `panel.position` | `top`, `between rows` or `DOM node` <sup>**[2]**</sup> | `top` | `str/obj`
-| `panel.stackable` | Allow stacking of multiple panels <sup>**[3]**</sup> | `true` | `boolean`
+| `context` | Context to compile Handlebars templates \* | `{}` | `str/obj`
+| `stage.fade` | Fade-in on “imagesloaded” event | `true` | `boolean`
+| `stage.speed` | Fade-in speed in milliseconds | `800` | `number`
+| `panel.position` | `top`, `between rows` or any DOM element | `top` | `str/obj`
+| `panel.classes` | Optional CSS classes | `''` | `string`
 | `panel.speed` | Animation speed in milliseconds | `600` | `number`
 | `panel.easing` | Animation easing type | `easeOutQuad` | `string`
-| &nbsp; | |
 | `scroll.offset` | Scroll top offset | `0` |  `number`
 | `scroll.speed` | Scroll speed in milliseconds | `600` | `number`
 | `scroll.easing` | Scroll easing type | `easeOutQuad` | `string`
-
-<sup>**[1]**</sup> Use only when `handlebars` is set to `false`.<br />
-<sup>**[2]**</sup> Use `top` or `between rows`, or a valid DOM element.<br />
-<sup>**[3]**</sup> This option is available only when `panel.position` is set to `top`.
 
 ```javascript
 /*
@@ -92,6 +80,7 @@ easeInCubic, easeOutCubic, easeInOutCubic, easeInQuart, easeOutQuart, easeInOutQ
 easeInQuint, easeOutQuint, easeInOutQuint, easeInExpo, easeOutExpo, easeInOutExpo.
 */
 ```
+> \* If handlebars.js library is not present, `context` should be a `string`, a path to which an Ajax request is sent.
 
 ### Callbacks
 ```javascript
@@ -119,7 +108,7 @@ onAfter: function(event, element) {}    // event: open, close (string)
 // https://gist.github.com/bcorreia/ed2210b1e11b947187e8
 ```
 
-### HTML data attribute
+### HTML data-role attribute
 ```html
 <!-- include data-role attributes in your panel template. (optional) -->
 data-role="close"             <!-- close panel -->
@@ -136,31 +125,29 @@ data-role="next"              <!-- next panel -->
 .selector .disabled      { … }
 ```
 
-## Panels.js with Handlebars
-> Handlebars provides the power necessary to build semantic templates effectively with no frustration. If you are not familiar with Handlebars, please refer to the [documentation](https://github.com/wycats/handlebars.js) or [tutorial](http://tutorialzine.com/2015/01/learn-handlebars-in-10-minutes/).
+## Using Panels.js with Handlebars
+Panles.js automatically detects and compiles Handlebars templates if present.
 
 ### Stage
-`.item` class is required.
 ```html
 <script data-role="stage" type="text/x-handlebars-template">
     {{#each items}}
-        <figure class="item">
-            <!-- be creative -->
+        <figure class="item"> <!-- required class -->
+            …
         </figure>
     {{/each}}
 </script>
 ```
 
 ### Panel
-`.panel` class is automatically added to the parent element.
 ```html
 <script data-role="panel" type="text/x-handlebars-template">
-    <!-- be creative -->
+    …
 </script>
 ```
 
 ### Context
-The **stage template** uses the same context as the **panel template**.
+The context object will be used to render the **stage template** and **panel template**.
 ```javascript
 {
     "items": [
@@ -174,8 +161,8 @@ The **stage template** uses the same context as the **panel template**.
 ## Panels.js without Handlebars
 Using Panels.js without Handlebars: [**view gist**](https://gist.github.com/bcorreia/69c8418931e8fdf84042)
 
-## Desandro’s imagesLoaded
-***Panels.js*** automatically recognizes the presence of the [imagesLoaded](https://github.com/desandro/imagesloaded) library.<br /> This library is recommended when image(s) are being loaded in your template.
+## imagesLoaded
+Panels.js automatically detects [imagesLoaded](https://github.com/desandro/imagesloaded) library if present.<br /> This library is recommended when image(s) are being loaded in your templates.
 
 ---
 

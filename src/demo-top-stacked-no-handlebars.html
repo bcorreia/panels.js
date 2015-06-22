@@ -194,11 +194,7 @@
 
         getJSON('./dataset/dataset.json', function(data) {
             var panels = new Panels(document.querySelector('.demo'), {
-                handlebars: false,
-                url: "./dataset/no-handlebars.html",
-                panel: {
-                    position: "top"
-                },
+                context: './dataset/no-handlebars.html',
                 scroll: {
                     offset: 12
                 }

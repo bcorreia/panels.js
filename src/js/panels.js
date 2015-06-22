@@ -2,27 +2,25 @@ var Panels = (function() {
     'use strict';
 
     var Velocity = window.Velocity || $.fn.velocity,
-        imagesLoaded = window.imagesLoaded || function(arg, callback) { return callback() };
+        imagesLoaded = window.imagesLoaded || function(arg, callback) { return callback() },
+        Handlebars = window.Handlebars || false;
 
     var defaults = {
-        handlebars: true,
         context: {},
-        url: undefined,
         stage: {
             fade: true,
             speed: 800
         },
         panel: {
-            classes: "",
-            position: "top",
-            stackable: true,
+            position: 'top',
+            classes: '',
             speed: 600,
-            easing: "easeOutQuad"
+            easing: 'easeOutQuad'
         },
         scroll: {
             offset: 0,
             speed: 600,
-            easing: "easeOutQuad"
+            easing: 'easeOutQuad'
         },
         onInit: function() {},
         onBefore: function() {},
@@ -131,7 +129,7 @@ var Panels = (function() {
                 items;
 
             // compile stage template
-            if ( settings.handlebars ) {
+            if ( Handlebars ) {
                 var template = Handlebars.compile(document.querySelector('[data-role="stage"]').innerHTML),
                     html = template(settings.context);
             }
@@ -185,7 +183,7 @@ var Panels = (function() {
             panel.setAttribute('data-paired', position);
 
             // handlebars
-            if ( settings.handlebars ) {
+            if ( Handlebars ) {
                 template = Handlebars.compile(document.querySelector('[data-role="panel"]').innerHTML);
                 panel.innerHTML = template(settings.context.items[position]);
                 return this.insert(panel, element, callback);
@@ -207,7 +205,7 @@ var Panels = (function() {
                 // concat
                 query = (query && query.length) ? query + "&" + n : n;
 
-                xhr.open('get', settings.url + "?" + query, true);
+                xhr.open('get', settings.context + "?" + query, true);
                 xhr.send();
                 xhr.onload = function() {
                     panel.innerHTML = xhr.response;
@@ -362,7 +360,7 @@ var Panels = (function() {
                 settings.onBefore("open", panel); // callback fn
             }.bind(this);
 
-            if ( stack.length && settings.panel.position !== "top" || stack.length && !settings.panel.stackable ) {
+            if ( stack.length && settings.panel.position !== "top" ) {
                 this.close(stack[stack.length -1], function() {
                     ready();
                 });

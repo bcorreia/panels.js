@@ -1,7 +1,7 @@
 {
   "name": "panels.js",
   "description": "Add templated panels to your layout.",
-  "version": "1.7.4",
+  "version": "1.8.0",
   "authors": [
     "Bruno Correia <mail@bcorreia.com>"
   ],
