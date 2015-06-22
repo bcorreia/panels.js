@@ -13,7 +13,8 @@ body                               { background:#2B303B; font: normal normal 300
 
 /* panel
 --------------------------------------------- */
-.panel                             { width: 100%; position: relative; overflow: hidden; background-color: #86B09F; }
+.panel                             { background-color: #FFF; background-image: -webkit-linear-gradient(135deg, #68BE87, #8BC8B7); background-image: linear-gradient(-45deg, #68BE87, #8BC8B7); }
+.panel                             { width: 100%; position: relative; overflow: hidden; }
 .panel h1                          { font-size: 2.369em; line-height: 1.4; font-weight: 100; margin: 0 0 45px 0; }
 .panel h1 span                     { color:#52747E; font-weight: 300; }
 .panel h2                          { font-size: 1.333em; line-height: 1.4; margin: 0 0 1em 0; }

@@ -2,7 +2,7 @@
 * :focus,
 * :active                               { outline: none !important; -moz-outline-style: none; }
 
-body                                    { background-color: #FFF; background-image: -webkit-linear-gradient(135deg, #68BE87, #8BC8B7); background-image: linear-gradient(-45deg, #68BE87, #8BC8B7);}
+body                                    { background-color: #FFF; background-image: -webkit-linear-gradient(135deg, #68BE87, #8BC8B7); background-image: linear-gradient(-45deg, #68BE87, #8BC8B7); }
 body                                    { font: normal normal 300 14px/1.6 'Roboto', Helvetica, Arial, Verdana, sans-serif; color: #4F5F46; }
 @media (min-width: 768px) {
     body                                { font-size: 16px; }
@@ -11,11 +11,11 @@ body                                    { font: normal normal 300 14px/1.6 'Robo
 h1                                      { font: normal normal 100 4.768em/1.2 'Roboto', Helvetica, Arial, Verdana, sans-serif; color: #FFF; margin: 0; }
 h2                                      { font: normal normal 300 2.618em/1.2 'Roboto', Helvetica, Arial, Verdana, sans-serif; color:#859894; margin: 0; }
 p                                       { font-size: 1.25em; margin: 0; }
-small                                   { font-size: .75em; padding: .25em; }
+small                                   { font-size: .833em; padding: .25em; }
 a                                       { text-decoration: none; color: #FFF; opacity: .75; }
 
 section                                 { height: 100vh; width: 100%; padding: 2em 2em 8em 2em; display: flex; display: -webkit-flex; align-items: center; -webkit-align-items: center; justify-content:center; -webkit-justify-content:center; flex-direction: column; -webkit-flex-direction: column; }
-section > p:last-child                  { position: absolute; bottom: 4px; right: 4px; display:block;  }
+section > p:last-child                  { position: absolute; bottom: 12px; right: 12px; display:block;  }
 .resources p span                       { font-size: .75em; background: #B4DAC6; padding: .25em; }
 .resources a                            { color: #4F5F46; }
 

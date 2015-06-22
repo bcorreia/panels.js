@@ -4,31 +4,26 @@
 [![Build Status](https://travis-ci.org/bcorreia/panels.js.svg?branch=master)](https://travis-ci.org/bcorreia/panels.js)
 
 ---
-Add templated panels to your layout.<br />
-***panels.js*** can be creatively applied to e-commerce projects, portfolio websites, comparison charts and other.
+Add templated panels to your layout. ***Panels.js*** can be creatively applied to portfolio websites, e-commerce projects, comparison charts and other.<br />
 
-1. Semantic templates with [handlebars](http://handlebarsjs.com) (optional)<br />
-1. Images loaded events with [imagesLoaded](https://github.com/desandro/imagesloaded) (optional)<br />
-1. Animation performance with [velocity](https://github.com/julianshapiro/velocity) (dependency)<br />
-1. Fully responsive. (no fixed height, no min-height)
+`demo` <br />
+[**bcorreia.com/panels.js**] (http://bcorreia.com/panels.js)
+
+1. Create semantic templates with Handlebars.js (optional)<br />
+1. Listen to load events with Desandro’s imagesloaded.js (optional)<br />
+1. Animation performance with Velocity.js (dependency)<br />
+1. Responsive
 1. jQuery is **not** required
-
-## Demos
-[Multiple panels stacked](http://bcorreia.com/projects/panels.js/src/demo-top-stacked.html)<br />
-[Single panel between rows](http://bcorreia.com/projects/panels.js/src/demo-between-rows.html)<br />
-[Single panel stacked - without handlebars.js](http://bcorreia.com/projects/panels.js/src/demo-top-stacked-no-handlebars.html)
 
 ---
 ## Documentation
 - [Getting Started](#getting-started)
-- [Usage](#usage)
-- [Default Settings](#default-settings)
-- [Callbacks](#callbacks)
-- [Public Methods](#public-methods)
+- [Settings](#default-settings)
+- [Callbacks & Public Methods](#callbacks)
 - [HTML data-attributes](#html-data-attributes)
-- [With Handlebars](#panelsjs-with-handlebars)
-- [Without Handlebars](#panelsjs-without-handlebars)
-- [imagesLoaded](#desandros-imagesloaded)
+- [Panels.js with Handlebars](#panelsjs-with-handlebars)
+- [Panels.js without Handlebars](#panelsjs-without-handlebars)
+- [Desandro’s imagesLoaded](#desandros-imagesloaded)
 
 ## Getting Started
 You may install panels.js using package managers, or download project [archive](https://github.com/bcorreia/panels.js/archive/master.zip).<br />
