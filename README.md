@@ -80,7 +80,7 @@ easeInCubic, easeOutCubic, easeInOutCubic, easeInQuart, easeOutQuart, easeInOutQ
 easeInQuint, easeOutQuint, easeInOutQuint, easeInExpo, easeOutExpo, easeInOutExpo.
 */
 ```
-> \* If handlebars.js library is not present, `context` should be a `string`, a path to which an Ajax request is sent.
+> \* <br />If handlebars.js library is not present, `context` should be a `string`, a path to which an Ajax request is sent.
 
 ### Callbacks
 ```javascript
@@ -110,10 +110,13 @@ onAfter: function(event, element) {}    // event: open, close (string)
 
 ### HTML data-role attribute
 ```html
-<!-- include data-role attributes in your panel template. (optional) -->
-data-role="close"             <!-- close panel -->
-data-role="previous"          <!-- previous panel -->
-data-role="next"              <!-- next panel -->
+<!-- optional -->
+data-role="close"                       <!-- close panel -->
+data-role="previous"                    <!-- previous panel -->
+data-role="next"                        <!-- next panel -->
+
+<!-- example -->
+<a class="-button" data-role="next" href="#">Next</a>
 ```
 
 ### CSS
@@ -142,7 +145,7 @@ Panles.js automatically detects and compiles Handlebars templates if present.
 ### Panel
 ```html
 <script data-role="panel" type="text/x-handlebars-template">
-    …
+    <!-- your handlebars template -->
 </script>
 ```
 
