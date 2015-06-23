@@ -57,10 +57,10 @@ onAfter: function() {}
 
 | Options | Description | Default | Type
 :--- | :--- | ---: | ---:
-| `context` | context to compile `handlebars.js` templates| `{}` | `str/obj`
+| `context` | context to compile `handlebars` templates| `{}` | `str/obj`
 | `stage.fade` | fade-in on `imagesloaded` event | `true` | `boolean`
 | `stage.speed` | fade-in speed in milliseconds | `800` | `number`
-| `panel.position` | `'top'`, `'between rows'` or a dom node | `top` | `str/obj`
+| `panel.position` | `top`, `between rows` or a dom node | `top` | `str/obj`
 | `panel.classes` | optional CSS classes | `''` | `string`
 | `panel.speed` | animation speed in milliseconds | `600` | `number`
 | `panel.easing` | animation easing type | `easeOutQuad` | `string`
@@ -124,7 +124,7 @@ data-role="next"                        <!-- next panel -->
 ```
 
 ## Handlebars
-**Panles.js** automatically detects and compiles Handlebars templates if present. If you want to use **Panels.js** without Handlebars, please refer to this [**gist**](https://gist.github.com/bcorreia/69c8418931e8fdf84042)
+Panles.js automatically detects and compiles Handlebars templates if present. If you want to use **Panels.js without Handlebars**, please refer to this [**gist**](https://gist.github.com/bcorreia/69c8418931e8fdf84042)
 
 ### Stage
 ```html
@@ -160,7 +160,7 @@ The context object will be used to render the stage template and panel template.
 Panels.js automatically detects [imagesLoaded](https://github.com/desandro/imagesloaded) library if present.<br /> This library is recommended when images are being loaded in your templates.
 
 ## Velocity
-Velocity.js is required. No additional programming is necessary.
+[Velocity.js](https://github.com/julianshapiro/velocity) is a dependency. No additional programming is necessary.
 
 ---
 
