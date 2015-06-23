@@ -163,5 +163,4 @@ Panels.js automatically detects [imagesLoaded](https://github.com/desandro/image
 [Velocity.js](https://github.com/julianshapiro/velocity) is a dependency. No additional programming is necessary.
 
 ---
-## License
 This software is free to use under the [MIT license](https://github.com/bcorreia/panels.js/blob/master/license.md).
