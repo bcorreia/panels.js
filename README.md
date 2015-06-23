@@ -105,10 +105,9 @@ onAfter: function(event, element) {}    // event: 'open', 'close' (string)
 
 ### HTML data-role attribute
 ```html
-<!-- optional -->
-data-role="close"                       <!-- close panel -->
-data-role="previous"                    <!-- previous panel -->
-data-role="next"                        <!-- next panel -->
+data-role="close"       <!-- close panel -->
+data-role="previous"    <!-- previous panel -->
+data-role="next"        <!-- next panel -->
 
 <!-- example -->
 <a class="-button" data-role="next" href="#">Next</a>
@@ -124,7 +123,7 @@ data-role="next"                        <!-- next panel -->
 ```
 
 ## Handlebars
-Panles.js automatically detects and compiles Handlebars templates if present. If you want to use *Panels.js without Handlebars*, please refer to this [**gist**](https://gist.github.com/bcorreia/69c8418931e8fdf84042).
+Panles.js automatically detects and compiles Handlebars templates if present. <br />If you want to use *Panels.js without Handlebars*, please refer to this [**gist**](https://gist.github.com/bcorreia/69c8418931e8fdf84042).
 
 ### Stage
 ```html
