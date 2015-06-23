@@ -5,13 +5,13 @@
 
 Add ***panels.js*** to your layout. Creatively apply it to portfolio websites, e-commerce, comparison charts and other.
 
-1. Create semantic templates with Handlebars.js \*
+1. Create semantic templates with Handlebars.js
 1. Animation performance with Velocity.js
 1. Responsive
 1. jQuery is **not** required
 
 ---
-[**demo**](http://bcorreia.com/panels.js)
+[**Demo**](http://bcorreia.com/panels.js)
 
 ---
 ## Getting Started
@@ -57,10 +57,10 @@ onAfter: function() {}
 
 | Options | Description | Default | Type
 :--- | :--- | ---: | ---:
-| `context` | context to compile Handlebars templates \* | `{}` | `str/obj`
-| `stage.fade` | fade-in on `imagesloaded` event \* | `true` | `boolean`
+| `context` | context to compile `handlebars.js` templates| `{}` | `str/obj`
+| `stage.fade` | fade-in on `imagesloaded` event | `true` | `boolean`
 | `stage.speed` | fade-in speed in milliseconds | `800` | `number`
-| `panel.position` | `'top'`, `'between rows'` or any DOM node | `top` | `str/obj`
+| `panel.position` | `'top'`, `'between rows'` or a dom node | `top` | `str/obj`
 | `panel.classes` | optional CSS classes | `''` | `string`
 | `panel.speed` | animation speed in milliseconds | `600` | `number`
 | `panel.easing` | animation easing type | `easeOutQuad` | `string`
@@ -68,10 +68,10 @@ onAfter: function() {}
 | `scroll.speed` | scroll speed in milliseconds | `600` | `number`
 | `scroll.easing` | scroll easing type | `easeOutQuad` | `string`
 
-> \* If handlebars.js library is not present, `context` should be a `string`, a path to which an ajax request is sent.
+> If **handlebars.js** library is not present, `context` should be a `string`, a path to which an ajax request is sent.
 
 ```javascript
-/* Available easing types are:
+/* available easing types are:
 easeInSine, easeOutSine, easeInOutSine, easeInQuad, easeOutQuad, easeInOutQuad,
 easeInCubic, easeOutCubic, easeInOutCubic, easeInQuart, easeOutQuart, easeInOutQuart,
 easeInQuint, easeOutQuint, easeInOutQuint, easeInExpo, easeOutExpo, easeInOutExpo */
@@ -123,8 +123,8 @@ data-role="next"                        <!-- next panel -->
 .selector .disabled      { … }
 ```
 
-## Using Panels.js with Handlebars
-Panles.js automatically detects and compiles Handlebars templates if present.
+## Handlebars
+**Panles.js** automatically detects and compiles Handlebars templates if present. If you want to use **Panels.js** without Handlebars, please refer to this [**gist**](https://gist.github.com/bcorreia/69c8418931e8fdf84042)
 
 ### Stage
 ```html
@@ -156,11 +156,11 @@ The context object will be used to render the stage template and panel template.
 }
 ```
 
-## Panels.js without Handlebars
-Using Panels.js without Handlebars: [**view gist**](https://gist.github.com/bcorreia/69c8418931e8fdf84042)
-
 ## imagesLoaded
 Panels.js automatically detects [imagesLoaded](https://github.com/desandro/imagesloaded) library if present.<br /> This library is recommended when images are being loaded in your templates.
+
+## Velocity
+Velocity.js is required. No additional programming is necessary.
 
 ---
 
