@@ -124,7 +124,7 @@ data-role="next"                        <!-- next panel -->
 ```
 
 ## Handlebars
-Panles.js automatically detects and compiles Handlebars templates if present. If you want to use **Panels.js without Handlebars**, please refer to this [**gist**](https://gist.github.com/bcorreia/69c8418931e8fdf84042)
+Panles.js automatically detects and compiles Handlebars templates if present. If you want to use *Panels.js without Handlebars*, please refer to this [**gist**](https://gist.github.com/bcorreia/69c8418931e8fdf84042)
 
 ### Stage
 ```html
@@ -162,7 +162,8 @@ Panels.js automatically detects [imagesLoaded](https://github.com/desandro/image
 ## Velocity
 [Velocity.js](https://github.com/julianshapiro/velocity) is a dependency. No additional programming is necessary.
 
----
+&nbps;
 
+---
 ## License
 This software is free to use under the [MIT license](https://github.com/bcorreia/panels.js/blob/master/license.md).
