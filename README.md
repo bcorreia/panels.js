@@ -160,7 +160,8 @@ The context object will be used to render the stage template and panel template.
 Panels.js automatically detects [imagesLoaded](https://github.com/desandro/imagesloaded) library if present.<br /> This library is recommended when images are being loaded in your templates.
 
 ## Velocity
-[Velocity.js](https://github.com/julianshapiro/velocity) is a dependency. No additional programming is necessary.
+[Velocity.js](https://github.com/julianshapiro/velocity) is a dependency.<br />
+No additional programming is necessary.
 
 ---
 This software is free to use under the [MIT license](https://github.com/bcorreia/panels.js/blob/master/license.md).
