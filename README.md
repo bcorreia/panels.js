@@ -71,14 +71,9 @@ onAfter: function() {}
 
 ### Callbacks
 ```javascript
-// called after stage-template compiles
-onInit: function() {}
-
-// called before animation starts
-onBefore: function(event, element) {}
-
-// called after animation ends
-onAfter: function(event, element) {}
+onInit: function() {}                   // called after stage-template compiles
+onBefore: function(event, element) {}   // called before animation starts
+onAfter: function(event, element) {}    // called after animation ends
 
 // event: 'open' or 'close' (string)
 // element: '.panel' (dom node)
@@ -116,7 +111,7 @@ Available classes are:
 ```
 
 ## Handlebars
-Panles.js automatically detects and compiles Handlebars templates if present. <br />If you want to use *Panels.js without Handlebars*, please refer to this [**gist**](https://gist.github.com/bcorreia/69c8418931e8fdf84042).
+Panles.js automatically detects and compiles Handlebars templates if present. <br />If you want to use Panels.js without Handlebars, please refer to this [**gist**](https://gist.github.com/bcorreia/69c8418931e8fdf84042).
 
 ### Stage
 ```html
@@ -137,7 +132,7 @@ Panles.js automatically detects and compiles Handlebars templates if present. <b
 ```
 
 ### Context
-The context object will be used to render the stage template and panel template.
+The context object will be used to render the stage-template and panel-template.
 ```javascript
 {
     "items": [
@@ -152,7 +147,7 @@ The context object will be used to render the stage template and panel template.
 Panels.js automatically detects [imagesLoaded](https://github.com/desandro/imagesloaded) library if present.<br /> This library is recommended when images are being loaded in your templates.
 
 ## Velocity
-[Velocity.js](https://github.com/julianshapiro/velocity) is a dependency.<br />
+[Velocity.js](https://github.com/julianshapiro/velocity) is the only dependency.<br />
 No additional programming is necessary.
 
 ---
