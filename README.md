@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/bcorreia/panels.js.svg?branch=master)](https://travis-ci.org/bcorreia/panels.js)
 
 ---
-Add templated panels to your layout.<br />
+Insert panels anywhere in your layout.<br />
 [**Demo**](http://bcorreia.com/panels.js)
 
 ## Getting Started
