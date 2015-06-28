@@ -3,29 +3,24 @@
 [![npm version](https://img.shields.io/npm/v/panels.js.svg?style=flat)](https://www.npmjs.com/package/panels.js)
 [![Build Status](https://travis-ci.org/bcorreia/panels.js.svg?branch=master)](https://travis-ci.org/bcorreia/panels.js)
 
-Add ***panels.js*** to your layout. Creatively apply it to portfolio websites, e-commerce, comparison charts and other.
-
-1. Create semantic templates with Handlebars.js
-1. Animation performance with Velocity.js
-1. Responsive
-1. jQuery is **not** required
-
 ---
+Add templated panels to your layout.<br />
 [**Demo**](http://bcorreia.com/panels.js)
 
----
 ## Getting Started
 Installing via `bower` is recommended.
 ```bash
 bower install panels.js
 npm install panels.js
 
-# panels.min.js           minified version of panels.js
+# panels.min.js           minified version
 # panels.pkg.min.js       minified with [velocity]
 # panels.pkg.all.min.js   minified with [velocity, handlebars, imagesloaded]
 ```
 
 ## Usage
+> jQuery is **not** required
+
 ```javascript
 var panels = new Panels(document.querySelector('.selector'), {
     // settings
@@ -68,14 +63,11 @@ onAfter: function() {}
 | `scroll.speed` | scroll speed in milliseconds | `600` | `number`
 | `scroll.easing` | scroll easing type | `easeOutQuad` | `string`
 
-> If **handlebars.js** library is not present, `context` should be a `string`, a path to which an ajax request is sent.
-
 ```javascript
-/* available easing types are:
-easeInSine, easeOutSine, easeInOutSine, easeInQuad, easeOutQuad, easeInOutQuad,
-easeInCubic, easeOutCubic, easeInOutCubic, easeInQuart, easeOutQuart, easeInOutQuart,
-easeInQuint, easeOutQuint, easeInOutQuint, easeInExpo, easeOutExpo, easeInOutExpo */
+// available easing types:
+// gist.github.com/bcorreia/8b2892ebad56514a644b
 ```
+> If **Handlebars.js** library is not present, `context` should be a string, a path to which an ajax request is sent.
 
 ### Callbacks
 ```javascript
@@ -83,12 +75,13 @@ easeInQuint, easeOutQuint, easeInOutQuint, easeInExpo, easeOutExpo, easeInOutExp
 onInit: function() {}
 
 // called before animation starts
-onBefore: function(event, element) {}   // event: 'open', 'close' (string)
-                                        // element: '.panel'      (DOM node)
+onBefore: function(event, element) {}
 
 // called after animation ends
-onAfter: function(event, element) {}    // event: 'open', 'close' (string)
-                                        // element: '.panel'      (DOM node)
+onAfter: function(event, element) {}
+
+// event: 'open' or 'close' (string)
+// element: '.panel' (dom node)
 ```
 
 ### Public Methods
@@ -100,7 +93,7 @@ onAfter: function(event, element) {}    // event: 'open', 'close' (string)
                                         // @param: callback after animation ends
 
 // example
-// https://gist.github.com/bcorreia/ed2210b1e11b947187e8
+// gist.github.com/bcorreia/ed2210b1e11b947187e8
 ```
 
 ### HTML data-role attribute
@@ -114,12 +107,12 @@ data-role="next"        <!-- next panel -->
 ```
 
 ### CSS
+Available classes are:
 ```css
-/* optional */
-.selector                { display: flex; flex-flow: row wrap; … }
-.selector .panel         { width: 100%; position: relative; overflow: hidden; }
-.selector .on            { … }
-.selector .disabled      { … }
+.panel              { … }
+.panel .-inner      { … }
+.on                 { … } /* active item */
+.disabled           { … } /* disabled button */
 ```
 
 ## Handlebars
@@ -163,4 +156,5 @@ Panels.js automatically detects [imagesLoaded](https://github.com/desandro/image
 No additional programming is necessary.
 
 ---
+## License
 This software is free to use under the [MIT license](https://github.com/bcorreia/panels.js/blob/master/license.md).
