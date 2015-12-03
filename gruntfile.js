@@ -58,11 +58,11 @@ module.exports = function (grunt) {
                 separator: ';\n',
             },
             pkg: {
-                src: ['dist/panels.min.js', 'components/velocity/velocity.min.js'],
+                src: ['dist/panels.min.js', 'packages/velocity/velocity.min.js'],
                 dest: 'dist/panels.pkg.min.js',
             },
             pkgall: {
-                src: ['dist/panels.min.js', 'components/velocity/velocity.min.js', 'components/handlebars/handlebars.min.js', 'components/imagesloaded/imagesloaded.pkgd.min.js'],
+                src: ['dist/panels.min.js', 'packages/velocity/velocity.min.js', 'packages/handlebars/handlebars.min.js', 'packages/imagesloaded/imagesloaded.pkgd.min.js'],
                 dest: 'dist/panels.pkg.all.min.js',
             },
         },
