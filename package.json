@@ -1,6 +1,6 @@
 {
   "name": "panels.js",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "description": "Add templated panels to your layout.",
   "main": "dist/panels.js",
   "repository": {
