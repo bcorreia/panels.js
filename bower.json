@@ -1,13 +1,13 @@
 {
   "name": "panels.js",
   "description": "Add templated panels to your layout.",
-  "version": "1.8.1",
+  "version": "1.8.2",
   "authors": [
     "Bruno Correia <mail@bcorreia.com>"
   ],
   "main": [
-    "dist/detials.js",
-    "dist/detials.min.js"
+    "dist/panels.js",
+    "dist/panels.min.js"
   ],
   "license": "MIT",
   "ignore": [
