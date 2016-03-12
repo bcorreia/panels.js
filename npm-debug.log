@@ -1,0 +1,101 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@3.5.2
+3 info using node@v4.2.4
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/Bruno/Dropbox/Projects/panels.js',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/Bruno/.npm/panels.js/1.8.1/package.tgz not in flight; packing
+9 info lifecycle panels.js@1.8.1~prepublish: panels.js@1.8.1
+10 silly lifecycle panels.js@1.8.1~prepublish: no script for prepublish, continuing
+11 verbose tar pack [ '/Users/Bruno/.npm/panels.js/1.8.1/package.tgz',
+11 verbose tar pack   '/Users/Bruno/Dropbox/Projects/panels.js' ]
+12 verbose tarball /Users/Bruno/.npm/panels.js/1.8.1/package.tgz
+13 verbose folder /Users/Bruno/Dropbox/Projects/panels.js
+14 verbose addLocalTarball adding from inside cache /Users/Bruno/.npm/panels.js/1.8.1/package.tgz
+15 silly cache afterAdd panels.js@1.8.1
+16 verbose afterAdd /Users/Bruno/.npm/panels.js/1.8.1/package/package.json not in flight; writing
+17 verbose afterAdd /Users/Bruno/.npm/panels.js/1.8.1/package/package.json written
+18 silly publish { name: 'panels.js',
+18 silly publish   version: '1.8.1',
+18 silly publish   description: 'Add templated panels to your layout.',
+18 silly publish   main: 'dist/panels.js',
+18 silly publish   repository:
+18 silly publish    { type: 'git',
+18 silly publish      url: 'git+https://github.com/bcorreia/panels.js.git' },
+18 silly publish   author:
+18 silly publish    { name: 'Bruno Correia',
+18 silly publish      email: 'mail@bcorreia.com',
+18 silly publish      url: 'http://bcorreia.com' },
+18 silly publish   license: 'MIT',
+18 silly publish   devDependencies:
+18 silly publish    { grunt: '^0.4.5',
+18 silly publish      'grunt-banner': '^0.4.0',
+18 silly publish      'grunt-contrib-concat': '^0.5.1',
+18 silly publish      'grunt-contrib-copy': '^0.8.0',
+18 silly publish      'grunt-contrib-uglify': '^0.9.1' },
+18 silly publish   readme: '# panels.js\n![Bower version](https://img.shields.io/bower/v/panels.js.svg?style=flat)\n[![npm version](https://img.shields.io/npm/v/panels.js.svg?style=flat)](https://www.npmjs.com/package/panels.js)\n[![Build Status](https://travis-ci.org/bcorreia/panels.js.svg?branch=master)](https://travis-ci.org/bcorreia/panels.js)\n\n---\nInsert panels anywhere in your layout.<br />\n[**Demo**](http://bcorreia.com/panels.js)\n\n## Getting Started\nInstalling via `bower` is recommended.\n```bash\nbower install panels.js\nnpm install panels.js\n\n# panels.min.js           minified version\n# panels.pkg.min.js       minified with [velocity]\n# panels.pkg.all.min.js   minified with [velocity, handlebars, imagesloaded]\n```\n\n## Usage\n> jQuery is **not** required\n\n```javascript\nvar panels = new Panels(document.querySelector(\'.selector\'), {\n    // settings\n});\n```\n\n## Settings\n```javascript\ncontext: {},\nstage: {\n    fade: true,\n    speed: 800\n},\npanel: {\n    position: \'top\',\n    classes: \'\',\n    speed: 600,\n    easing: \'easeOutQuad\'\n},\nscroll: {\n    offset: 0,\n    speed: 600,\n    easing: \'easeOutQuad\'\n},\nonInit: function() {},\nonBefore: function() {},\nonAfter: function() {}\n```\n\n| Options | Description | Default | Type\n:--- | :--- | ---: | ---:\n| `context` | context to compile `handlebars` templates| `{}` | `str/obj`\n| `stage.fade` | fade-in on `imagesloaded` event | `true` | `boolean`\n| `stage.speed` | fade-in speed in milliseconds | `800` | `number`\n| `panel.position` | `top`, `between rows` or a dom node | `top` | `str/obj`\n| `panel.classes` | optional CSS classes | `\'\'` | `string`\n| `panel.speed` | animation speed in milliseconds | `600` | `number`\n| `panel.easing` | animation easing type | `easeOutQuad` | `string`\n| `scroll.offset` | scroll top offset | `0` |  `number`\n| `scroll.speed` | scroll speed in milliseconds | `600` | `number`\n| `scroll.easing` | scroll easing type | `easeOutQuad` | `string`\n\n```javascript\n// available easing types:\n// gist.github.com/bcorreia/8b2892ebad56514a644b\n```\n> If **Handlebars.js** library is not present, `context` should be a string, a path to which an ajax request is sent.\n\n### Callbacks\n```javascript\nonInit: function() {}                   // called after stage-template compiles\nonBefore: function(event, element) {}   // called before animation starts\nonAfter: function(event, element) {}    // called after animation ends\n\n// event: \'open\' or \'close\' (string)\n// element: \'.panel\' (dom node)\n```\n\n### Public Methods\n```javascript\n.open(element, callback);               // @param: \'.item\' element\n                                        // @param: callback after animation ends\n\n.close(element, callback);              // @param: \'.panel\' element\n                                        // @param: callback after animation ends\n\n// example\n// gist.github.com/bcorreia/ed2210b1e11b947187e8\n```\n\n### HTML data-role attribute\n```html\ndata-role="close"       <!-- close panel -->\ndata-role="previous"    <!-- previous panel -->\ndata-role="next"        <!-- next panel -->\n\n<!-- example -->\n<a class="-button" data-role="next" href="#">Next</a>\n```\n\n### CSS\nAvailable classes are:\n```css\n.panel              { … }\n.panel .-inner      { … }\n.on                 { … } /* active item */\n.disabled           { … } /* disabled button */\n```\n\n## Handlebars\nPanles.js automatically detects and compiles Handlebars templates if present. <br />If you want to use Panels.js without Handlebars, please refer to this [**gist**](https://gist.github.com/bcorreia/69c8418931e8fdf84042).\n\n### Stage\n```html\n<script data-role="stage" type="text/x-handlebars-template">\n    {{#each items}}\n        <figure class="item"> <!-- required class -->\n            …\n        </figure>\n    {{/each}}\n</script>\n```\n\n### Panel\n```html\n<script data-role="panel" type="text/x-handlebars-template">\n    <!-- your handlebars template -->\n</script>\n```\n\n### Context\nThe context object will be used to render the stage-template and panel-template.\n```javascript\n{\n    "items": [\n        { "key": "value", … },\n        { "key": "value", … }\n        …\n    ]\n}\n```\n\n## imagesLoaded\nPanels.js automatically detects [imagesLoaded](https://github.com/desandro/imagesloaded) library if present.<br /> This library is recommended when images are being loaded in your templates.\n\n## Velocity\n[Velocity.js](https://github.com/julianshapiro/velocity) is the only dependency.<br />\nNo additional programming is necessary.\n\n---\n## License\nThis software is free to use under the [MIT license](https://github.com/bcorreia/panels.js/blob/master/license.md).\n',
+18 silly publish   readmeFilename: 'README.md',
+18 silly publish   gitHead: '2859bd1740b3b4897ad45a57df8150f001b3d6d9',
+18 silly publish   bugs: { url: 'https://github.com/bcorreia/panels.js/issues' },
+18 silly publish   homepage: 'https://github.com/bcorreia/panels.js#readme',
+18 silly publish   _id: 'panels.js@1.8.1',
+18 silly publish   scripts: {},
+18 silly publish   _shasum: 'f541cfdf884a1a946a82a1821dcc61988b1f7180',
+18 silly publish   _from: '.' }
+19 verbose getPublishConfig undefined
+20 silly mapToRegistry name panels.js
+21 silly mapToRegistry using default registry
+22 silly mapToRegistry registry https://registry.npmjs.org/
+23 silly mapToRegistry uri https://registry.npmjs.org/panels.js
+24 verbose publish registryBase https://registry.npmjs.org/
+25 silly publish uploading /Users/Bruno/.npm/panels.js/1.8.1/package.tgz
+26 verbose request uri https://registry.npmjs.org/panels.js
+27 verbose request sending authorization for write operation
+28 info attempt registry request try #1 at 4:14:46 PM
+29 verbose request id 9f09e1feda99d8ec
+30 http request PUT https://registry.npmjs.org/panels.js
+31 http 403 https://registry.npmjs.org/panels.js
+32 verbose headers { 'content-type': 'application/json',
+32 verbose headers   'cache-control': 'max-age=300',
+32 verbose headers   'content-length': '95',
+32 verbose headers   'accept-ranges': 'bytes',
+32 verbose headers   date: 'Sat, 12 Mar 2016 00:14:46 GMT',
+32 verbose headers   via: '1.1 varnish',
+32 verbose headers   connection: 'keep-alive',
+32 verbose headers   'x-served-by': 'cache-lax1431-LAX',
+32 verbose headers   'x-cache': 'MISS',
+32 verbose headers   'x-cache-hits': '0',
+32 verbose headers   'x-timer': 'S1457741686.270167,VS0,VE500' }
+33 verbose request invalidating /Users/Bruno/.npm/registry.npmjs.org/panels.js on PUT
+34 error publish Failed PUT 403
+35 verbose stack Error: "You cannot publish over the previously published version 1.8.1." : panels.js
+35 verbose stack     at makeError (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:264:12)
+35 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:252:14)
+35 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:172:14)
+35 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:198:22)
+35 verbose stack     at emitTwo (events.js:87:13)
+35 verbose stack     at Request.emit (events.js:172:7)
+35 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1082:10)
+35 verbose stack     at emitOne (events.js:82:20)
+35 verbose stack     at Request.emit (events.js:169:7)
+35 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1009:12)
+36 verbose statusCode 403
+37 verbose pkgid panels.js
+38 verbose cwd /Users/Bruno/Dropbox/Projects/panels.js
+39 error Darwin 15.4.0
+40 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "publish"
+41 error node v4.2.4
+42 error npm  v3.5.2
+43 error code E403
+44 error "You cannot publish over the previously published version 1.8.1." : panels.js
+45 error If you need help, you may report this error at:
+45 error     <https://github.com/npm/npm/issues>
+46 verbose exit [ 1, true ]
